@@ -1,0 +1,24 @@
+{
+  "name": "SERLER",
+  "version": "1.0.0",
+  "description": "Software Engineering Research Lab Evidence Repository (SERLER)",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd api && npm start\" \"cd client && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yellow-Spotted-Lizard/SERLER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yellow-Spotted-Lizard/SERLER/issues"
+  },
+  "homepage": "https://github.com/Yellow-Spotted-Lizard/SERLER#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
