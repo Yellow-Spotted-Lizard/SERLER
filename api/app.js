@@ -8,6 +8,12 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Express only serves static assets in production
+if (process.env.NODE_ENV === "production") {
+  console.info('under production environment')
+  app.use(express.static("../client/build"));
+}
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
