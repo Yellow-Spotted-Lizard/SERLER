@@ -14,7 +14,9 @@
     "deploy:heroku": "cd api && npm start",
     "predeploy:heroku": "cd client && npm run build",
 
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "postinstall": "cd api && npm install && cd ../client && npm install"
   },
   "repository": {
     "type": "git",
