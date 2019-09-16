@@ -1,5 +1,10 @@
 # SERLER
+
 Software Engineering Research Lab Evidence Repository (SERLER)
+
+# Deployment on Heroku
+
+link: <https://yellow-spotted-lizard-serler.herokuapp.com/>
 
 # Quick Start
 
@@ -28,7 +33,7 @@ Run front-end only:
 
 Document: <https://devcenter.heroku.com/articles/git>
 
-- set up the Heroku app with local repo
+- set up the Heroku app with local repo (I have set up the permissions for our team. If you can't access, please contact @Stone)
 
       heroku git:remote -a yellow-spotted-lizard-serler
 
@@ -36,6 +41,6 @@ Document: <https://devcenter.heroku.com/articles/git>
 
       git push heroku master
 
-    if you are pushing from branch other than "master":
+  if you are pushing from branch other than "master":
 
       git push heroku <your-branch-name>:master
