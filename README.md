@@ -23,3 +23,19 @@ Run front-end only:
     cd client
     npm install
     npm start
+
+# Deploying to Heroku
+
+Document: <https://devcenter.heroku.com/articles/git>
+
+- set up the Heroku app with local repo
+
+      heroku git:remote -a yellow-spotted-lizard-serler
+
+- then push to heroku
+
+      git push heroku master
+
+    if you are pushing from branch other than "master":
+
+      git push heroku <your-branch-name>:master
