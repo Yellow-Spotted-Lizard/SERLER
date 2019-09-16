@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Software Engineering Research Lab Evidence Repository (SERLER)",
   "main": "index.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "scripts": {
     "start": "concurrently \"cd api && npm start\" \"cd client && npm start\"",
     "deploy:local": "cd api && NODE_ENV=production npm start",
