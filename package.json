@@ -6,7 +6,11 @@
   "scripts": {
     "start": "concurrently \"cd api && npm start\" \"cd client && npm start\"",
     "deploy:local": "cd api && NODE_ENV=production npm start",
-    "predeploy:local": "cd client && npm run build",
+    "predeploy:local": "cd client && NODE_ENV=production npm run build",
+
+    "deploy:heroku": "cd api && npm start",
+    "predeploy:heroku": "cd client && npm run build",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
