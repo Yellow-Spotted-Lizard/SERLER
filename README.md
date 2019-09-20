@@ -2,20 +2,22 @@
 
 Software Engineering Research Lab Evidence Repository (SERLER)
 
-# Deployment on Heroku
+[![Build Status](https://travis-ci.com/Yellow-Spotted-Lizard/SERLER.svg?branch=develop)](https://travis-ci.com/Yellow-Spotted-Lizard/SERLER)
+
+## Deployment on Heroku
 
 link: <https://yellow-spotted-lizard-serler.herokuapp.com/>
 
-# Quick Start
+## Quick Start
 
 Back-end project: `api`
 Front-end project: `client`
 
-## Run full-stack
+### Run full-stack
 
     npm start
 
-## Run back-end only
+### Run back-end only
 
     cd api
     npm install
@@ -26,13 +28,13 @@ If you want to debug with remote MongoDB, use (replace `<password>` with real pa
 
     MONGODB_URI='mongodb+srv://lizard:<password>@serler-nlyux.mongodb.net/test?retryWrites=true&w=majority' DEBUG=api:* npm start
 
-## Run front-end only
+### Run front-end only
 
     cd client
     npm install
     npm start
 
-## Run deployment locally (for test purpose only)
+### Run deployment locally (for test purpose only)
 
 either
 
@@ -47,7 +49,7 @@ if you want to test on production environment(not recommended but sometimes nece
     MONGODB_URI='mongodb+srv://lizard:<password>@serler-nlyux.mongodb.net/test?retryWrites=true&w=majority' NODE_ENV=production DEBUG=api:* npm run deploy:local
     MONGODB_URI='mongodb+srv://lizard:<password>@serler-nlyux.mongodb.net/test?retryWrites=true&w=majority' NODE_ENV=production DEBUG=api:* heroku local web
 
-# Deploying to Heroku
+## Deploying to Heroku
 
 Document: <https://devcenter.heroku.com/articles/git>
 
