@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../model/db');
 const Evidence = require('../model/evidences')
+var debug = require('debug')('api:route:evidences');
 
 const router = express.Router();
 
@@ -31,7 +32,18 @@ Evidence.updateOne({_id: ev1obj._id}, ev1obj, {upsert: true}, function (err, raw
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send();
+  Evidence
+  .find()
+  .limit(20)
+  .exec()
+  .then(evs => {
+    debug('found evidences and return: ', evs);
+    res.json(evs);
+  })
+  .catch(err => {
+    debug('error in find evidence: ', err);
+    res.status(500).send('an error occurred: ' + err);
+  });
 });
 
 module.exports = router;
