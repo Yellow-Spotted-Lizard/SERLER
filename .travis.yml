@@ -7,4 +7,4 @@ deploy:
   api_key: 9439cfbd-fa1f-450e-b67e-ac3fcd9c252a
   on: feature/app-skeleton
   app:
-    feature/app-skeleton: yellow-spotted-lizard
+    feature/app-skeleton: yellow-spotted-lizard-serler
