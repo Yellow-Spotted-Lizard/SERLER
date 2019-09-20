@@ -5,6 +5,6 @@ node_js:
 deploy:
   provider: heroku
   api_key: 9439cfbd-fa1f-450e-b67e-ac3fcd9c252a
-  on: feature/app-skeleton
+  on: develop
   app:
-    feature/app-skeleton: yellow-spotted-lizard-serler
+    develop: yellow-spotted-lizard-serler
