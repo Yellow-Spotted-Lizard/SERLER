@@ -13,7 +13,7 @@
 
     "deploy:heroku": "cd api && npm start",
 
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd api && npm test && cd ../client && npm run test:nowatch",
 
     "postinstall": "cd api && npm install && cd ../client && npm install && npm run build"
   },

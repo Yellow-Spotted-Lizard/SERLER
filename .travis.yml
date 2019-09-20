@@ -1,3 +1,10 @@
 language: node_js
 node_js:
   - "node"
+
+deploy:
+  provider: heroku
+  api_key: 9439cfbd-fa1f-450e-b67e-ac3fcd9c252a
+  on: feature/app-skeleton
+  app:
+    feature/app-skeleton: yellow-spotted-lizard
