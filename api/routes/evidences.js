@@ -5,7 +5,8 @@ var debug = require('debug')('api:route:evidences');
 
 const router = express.Router();
 
-/* debug only
+/*/
+//insert test data for debug only
 var ev1 = new Evidence({
   title: 'software engineering',
   url: 'http://wikipedia.com/software_engineering',
@@ -18,6 +19,12 @@ var ev1 = new Evidence({
   }]
 });
 
+var ev2 = new Evidence({
+  title: 'test title',
+  url: 'http://test.url',
+  authors: []
+});
+
 console.error(ev1);
 
 // ev1.save(err => {
@@ -28,9 +35,10 @@ const ev1obj = ev1.toObject();
 Evidence.updateOne({_id: ev1obj._id}, ev1obj, {upsert: true}, function (err, raw) {
   console.error('insert error', err, raw);
 });
-*/
 
-/* GET home page. */
+ev2.save();
+//*/
+
 router.get('/', function(req, res, next) {
   Evidence
   .find()

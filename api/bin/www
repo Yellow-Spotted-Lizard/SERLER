@@ -4,7 +4,12 @@
  * Module dependencies.
  */
 
-require('dotenv').config()
+const custom_env = require('custom-env');
+if (process.env.NODE_ENV === "production") {
+  custom_env.env('prod');
+} else {
+  custom_env.env('debug');
+}
 
 var app = require('../app');
 var debug = require('debug')('api:server');
