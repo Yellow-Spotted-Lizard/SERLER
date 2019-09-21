@@ -21,8 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
+var router = express.Router();
+router.use('/users', usersRouter);
+router.use('/evidences', evidencesRouter);
+
 // app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/evidences', evidencesRouter);
+app.use('/api/v1', router);
 
 module.exports = app;
