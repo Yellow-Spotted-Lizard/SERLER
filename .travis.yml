@@ -1,8 +1,8 @@
+warnings_are_errors: false
+
 language: node_js
 node_js:
   - "node"
-
-warnings_are_errors: false
 
 deploy:
   provider: heroku
