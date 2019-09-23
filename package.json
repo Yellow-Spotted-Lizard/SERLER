@@ -10,11 +10,8 @@
     "start": "concurrently \"cd api && npm start\" \"cd client && npm start\"",
     "deploy:local": "cd api && NODE_ENV=production npm start",
     "predeploy:local": "cd client && NODE_ENV=production npm run build",
-
     "deploy:heroku": "cd api && npm start",
-
     "test": "cd api && npm test && cd ../client && npm run test:nowatch",
-
     "postinstall": "cd api && npm install && cd ../client && npm install && npm run build"
   },
   "repository": {
@@ -29,6 +26,8 @@
   },
   "homepage": "https://github.com/Yellow-Spotted-Lizard/SERLER#readme",
   "dependencies": {
-    "concurrently": "^4.1.2"
+    "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.2",
+    "react-router-dom": "^5.0.1"
   }
 }
