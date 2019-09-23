@@ -22,7 +22,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://github.com/Yellow-Spotted-Lizard/SERLER/wiki" target="_blank">
+            <a className="navbar-brand" href="https://github.com/Yellow-Spotted-Lizard/SERLER/wiki" target="_blank">
               <img src={logo} width="30" height="30" />
             </a>
             <Link to="/" className="navbar-brand">Home</Link>
