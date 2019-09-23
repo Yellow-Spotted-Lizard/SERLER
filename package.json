@@ -12,7 +12,7 @@
     "predeploy:local": "cd client && NODE_ENV=production npm run build",
     "deploy:heroku": "cd api && npm start",
     "test": "cd api && npm test && cd ../client && npm run test:nowatch",
-    "postinstall": "cd api && npm install && cd ../client && npm install && npm run build"
+    "postinstall": "cd api && npm install && cd ../client && npm install && CI=false npm run build"
   },
   "repository": {
     "type": "git",

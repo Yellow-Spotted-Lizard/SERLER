@@ -10,3 +10,10 @@ deploy:
   on: develop
   app:
     develop: yellow-spotted-lizard-serler
+
+notifications:
+  slack:
+    rooms:
+      - yellowspottedlizard:9RgcTIh2nvbwzsn6tIvvV1yE#travis-ci
+    on_success: always
+    on_failure: always
