@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "node"
 
+warnings_are_errors: false
+
 deploy:
   provider: heroku
   api_key: 9439cfbd-fa1f-450e-b67e-ac3fcd9c252a
