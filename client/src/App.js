@@ -1,6 +1,6 @@
 //import React from 'react';
 import React, { Component } from 'react';
-import logo from './Serler-Lizard.svg';
+import logo from './Serler-Lizard.png';
 import './App.css';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
