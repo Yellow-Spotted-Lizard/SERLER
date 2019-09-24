@@ -1,3 +1,5 @@
+const users = require('./users');
+
 exports.getInitialUserList = function() {
     // Eirik Guestsson - Guest
     var guest = {
@@ -62,4 +64,13 @@ exports.getInitialUserList = function() {
     userList.push(admin);
 
     return userList;
+}
+
+exports.getUserById = function(id) {
+    var userList = users.getInitialUserList();
+    var user = userList.find(function(element) { 
+        return element.user_id == id; 
+    }); 
+
+    return user;
 }
