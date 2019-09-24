@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const users = require('../model/users');
+const userService = require('../services/user-service');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.info('method: get all users');
  
-  var userList = users.getInitialUserList();
+  var userList = userService.getInitialUserList();
   res.json(userList);
 });
 
@@ -15,7 +15,7 @@ router.get('/:id', function(req, res, next)  {
   var id = req.params.id;
   console.info('method: get user by id = \'' + id + '\'');
 
-  var user = users.getUserById(id);
+  var user = userService.getUserById(id);
   res.json(user);
 });
 
