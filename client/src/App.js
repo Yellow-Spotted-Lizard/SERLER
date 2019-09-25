@@ -1,6 +1,6 @@
 //import React from 'react';
 import React, { Component } from 'react';
-import logo from './Serler-Lizard.svg';
+import logo from './Serler-Lizard.png';
 import './App.css';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -15,6 +15,7 @@ import Analyze from "./components/analyze.component";
 import RepositorySettings from "./components/repository-settings.component";
 import Users from "./components/users.component";
 import About from "./components/about.component";
+import Dashboard from "./components/dashboard.component";
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://github.com/Yellow-Spotted-Lizard/SERLER/wiki" target="_blank">
+            <a className="navbar-brand" href="https://yellow-spotted-lizard-serler.herokuapp.com" target="_blank">
               <img src={logo} width="30" height="30" />
             </a>
             <Link to="/" className="navbar-brand">Home</Link>
@@ -56,7 +57,7 @@ class App extends Component {
             </div>
           </nav>
           <br/>
-          <Route path="/" exact component={About} />
+          <Route path="/" exact component={Dashboard} />
           <Route path="/browse" component={Browse} />
           <Route path="/search" component={Search} />
           <Route path="/submit" component={Submit} />

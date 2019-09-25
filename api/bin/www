@@ -21,6 +21,7 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+console.info('Web-API listening port: ' + port);
 
 /**
  * Create HTTP server.
@@ -93,5 +94,6 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+    console.info('Web-API Server listen to: Address = \'' + addr.address + '\' Port = ' + port);
   debug('Listening on ' + bind);
 }
