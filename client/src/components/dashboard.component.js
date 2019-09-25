@@ -18,7 +18,7 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-      axios.get('http://localhost:9001/api/v1/users')
+      axios.get('/api/v1/users')
           .then(response => {
               this.setState({ users: response.data });
           })
