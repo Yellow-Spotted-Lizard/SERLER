@@ -23,7 +23,7 @@ var errorResult = {
 }
 
 exports.seedUsers = function (res) {
-    User.findOne({ login: 'admin' }, function(err, user) {
+    User.findOne({ login: 'asgard' }, function(err, user) {
         if (err) {
             console.info(err);
         } 

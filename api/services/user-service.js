@@ -4,7 +4,7 @@ const User = require('../model/user');
 exports.getInitialUserList = function() {
     // Eirik Guestsson - Guest
     var guest = {
-        login: 'guest',
+        login: 'eirik',
         password: 'Passw0rd',
         full_name: 'Eirik Guestsson',
         email: 'eirik.guestsson@allzeek.com',
@@ -13,7 +13,7 @@ exports.getInitialUserList = function() {
 
     // Veleif Usersson - User
     var user = {
-        login: 'user',
+        login: 'veleif',
         password: 'Passw0rd',
         full_name: 'Veleif Usersson',
         email: 'veleif.usersson@allzeek.com',
@@ -31,7 +31,7 @@ exports.getInitialUserList = function() {
 
     // Ragneid Moderatordottir - Moderator
     var moderator = {
-        login: 'moderator',
+        login: 'ragneid',
         password: 'Passw0rd',
         full_name: 'Ragneid Moderatordottir',
         email: 'ragneid.moderatordottir@allzeek.com',
@@ -40,16 +40,16 @@ exports.getInitialUserList = function() {
 
     // Ornolf Submittersson - Submitter
     var submitter = {
-        login: 'submitter',
+        login: 'ornolf',
         password: 'Passw0rd',
-        ull_name: 'Ornolf Submittersson',
+        full_name: 'Ornolf Submittersson',
         email: 'ornolf.submittersson@allzeek.com',
         role: 'submitter'
     };
 
     // Asgard Admindottir - Admin
     var admin = {
-        login: 'admin',
+        login: 'asgard',
         password: 'Passw0rd',
         full_name: 'Asgard Admindottir',
         email: 'asgard.admindottir@allzeek.com',
@@ -77,7 +77,7 @@ exports.getUserList = function(res) {
                 res.json(users);
             }
         }
-    }); 
+    }).sort({login: 'Asc'}); 
 } 
 
 exports.getUserByLogin = function(login, res) {

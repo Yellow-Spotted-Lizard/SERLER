@@ -10,6 +10,8 @@ var evidencesRouter = require('./routes/evidences');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+const cors = require('cors');
+app.use(cors());
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production") {
