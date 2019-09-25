@@ -17,16 +17,14 @@ router.get('/', function(req, res, next)  {
 router.get('/users/seed', function(req, res, next)  {
     console.info('method: admin/users/seed');
   
-    var result = adminService.seedUsers();
-    res.json(result);
+    adminService.seedUsers(res);
 });
 
 /* Dispose users */
 router.get('/users/dispose', function(req, res, next)  {
     console.info('method: admin/users/dispose');
   
-    var result = adminService.disposeUsers();
-    res.json(result);
+    adminService.disposeUsers(res);
 });
-
+ 
 module.exports = router;

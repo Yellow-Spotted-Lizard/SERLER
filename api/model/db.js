@@ -11,3 +11,4 @@ mongoose
 });
 
 debug(`use mongodb ${url}, db name: ${db_name}`);
+console.info(`use mongodb ${url}, db name: ${db_name}`);

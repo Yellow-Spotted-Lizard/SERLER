@@ -1,58 +1,59 @@
 const userService = require('./user-service');
+const User = require('../model/user');
 
 exports.getInitialUserList = function() {
     // Eirik Guestsson - Guest
     var guest = {
-        user_id: 'guest',
-        user_password: 'Passw0rd',
-        user_full_name: 'Eirik Guestsson',
-        user_email: 'eirik.guestsson@allzeek.com',
-        user_role: 'guest'
+        login: 'guest',
+        password: 'Passw0rd',
+        full_name: 'Eirik Guestsson',
+        email: 'eirik.guestsson@allzeek.com',
+        role: 'guest'
     };
 
     // Veleif Usersson - User
     var user = {
-        user_id: 'user',
-        user_password: 'Passw0rd',
-        user_full_name: 'Veleif Usersson',
-        user_email: 'veleif.usersson@allzeek.com',
-        user_role: 'user'
+        login: 'user',
+        password: 'Passw0rd',
+        full_name: 'Veleif Usersson',
+        email: 'veleif.usersson@allzeek.com',
+        role: 'user'
     };
 
     // Torhild Analystdottir - Analyst
     var analyst = {
-        user_id: 'analyst',
-        user_password: 'Passw0rd',
-        user_full_name: 'Torhild Analystdottir',
-        user_email: 'torhild.analystdottir@allzeek.com',
-        user_role: 'analyst'
+        login: 'analyst',
+        password: 'Passw0rd',
+        full_name: 'Torhild Analystdottir',
+        email: 'torhild.analystdottir@allzeek.com',
+        role: 'analyst'
     };
 
     // Ragneid Moderatordottir - Moderator
     var moderator = {
-        user_id: 'moderator',
-        user_password: 'Passw0rd',
-        user_full_name: 'Ragneid Moderatordottir',
-        user_email: 'ragneid.moderatordottir@allzeek.com',
-        user_role: 'moderator'
+        login: 'moderator',
+        password: 'Passw0rd',
+        full_name: 'Ragneid Moderatordottir',
+        email: 'ragneid.moderatordottir@allzeek.com',
+        role: 'moderator'
     };
 
     // Ornolf Submittersson - Submitter
     var submitter = {
-        user_id: 'submitter',
-        user_password: 'Passw0rd',
-        user_full_name: 'Ornolf Submittersson',
-        user_email: 'ornolf.submittersson@allzeek.com',
-        user_role: 'submitter'
+        login: 'submitter',
+        password: 'Passw0rd',
+        ull_name: 'Ornolf Submittersson',
+        email: 'ornolf.submittersson@allzeek.com',
+        role: 'submitter'
     };
 
     // Asgard Admindottir - Admin
     var admin = {
-        user_id: 'admin',
-        user_password: 'Passw0rd',
-        user_full_name: 'Asgard Admindottir',
-        user_email: 'asgard.admindottir@allzeek.com',
-        user_role: 'admin'
+        login: 'admin',
+        password: 'Passw0rd',
+        full_name: 'Asgard Admindottir',
+        email: 'asgard.admindottir@allzeek.com',
+        role: 'admin'
     };
 
     var userList = [];
@@ -66,11 +67,47 @@ exports.getInitialUserList = function() {
     return userList;
 }
 
-exports.getUserById = function(id) {
-    var userList = userService.getInitialUserList();
-    var user = userList.find(function(element) { 
-        return element.user_id == id; 
+exports.getUserList = function(res) {
+    User.find(function(err, users) {
+        if (err) {
+            console.info(err);
+        } 
+        else {
+            if (users != null) {
+                res.json(users);
+            }
+        }
     }); 
+} 
 
-    return user;
+exports.getUserByLogin = function(login, res) {
+    User.findOne({ login: login }, function(err, user) {
+        if (err) {
+            console.info(err);
+        } 
+        else {
+            if (user != null) {
+                res.json(user);
+            }
+            else {
+                res.json(null);
+            }
+        }
+    });
+}
+
+exports.getUserById = function(id) {
+    User.findById(id, function(err, user) {
+        if (err) {
+            console.info(err);
+        } 
+        else {
+            if (user != null) {
+                res.json(user);
+            }
+            else {
+                res.json(null);
+            }
+        }
+    });
 }
