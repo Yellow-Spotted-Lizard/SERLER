@@ -5,40 +5,6 @@ var debug = require('debug')('api:route:evidences');
 
 const router = express.Router();
 
-/*/
-//insert test data for debug only
-var ev1 = new Evidence({
-  title: 'software engineering',
-  url: 'http://wikipedia.com/software_engineering',
-  authors: [{
-    firstName: 'Foo',
-    lastName: 'Bar'
-  },{
-    firstName: 'Foobar',
-    lastName: 'Baz'
-  }]
-});
-
-var ev2 = new Evidence({
-  title: 'test title',
-  url: 'http://test.url',
-  authors: []
-});
-
-console.error(ev1);
-
-// ev1.save(err => {
-//   console.error('error', err);
-// })
-
-const ev1obj = ev1.toObject();
-Evidence.updateOne({_id: ev1obj._id}, ev1obj, {upsert: true}, function (err, raw) {
-  console.error('insert error', err, raw);
-});
-
-ev2.save();
-//*/
-
 router.get('/', function(req, res, next) {
   Evidence
   .find()
@@ -50,6 +16,24 @@ router.get('/', function(req, res, next) {
   })
   .catch(err => {
     debug('error in find evidence: ', err);
+    res.status(500).send('an error occurred: ' + err);
+  });
+});
+
+router.get('/search', function(req, res, next) {
+  let title_contains = req.query.title_contains;
+  let limit = req.query.limit || 20;
+
+  Evidence
+  .find({"title": { "$regex": title_contains, "$options": "i" }})
+  .limit(limit)
+  .exec()
+  .then(evs => {
+    debug(`search evidences query ${JSON.stringify(req.query)} and return: ${evs}`);
+    res.json(evs);
+  })
+  .catch(err => {
+    debug(`error in find evidence for query: ${JSON.stringify(req.query)}, error: ${err}`);
     res.status(500).send('an error occurred: ' + err);
   });
 });
