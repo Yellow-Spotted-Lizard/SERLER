@@ -131,14 +131,18 @@ var ev4 = new Evidence({
   date: ''
 });
 
-for (let ev of [ev1, ev2, ev3]) {
-  const obj = ev.toObject();
-  Evidence.updateOne({_id: obj._id}, obj, {upsert: true}, function (err, raw) {
-    if (error != null) {
-      console.error('insert result: error: ', err, raw);
-      process.exit(1);
-    }
-  });
-}
-
-process.exit(0);
+let evs = [ev1, ev2, ev3];
+Promise.all(evs.map(ev => new Promise(
+    (resolve, reject) => {
+      const obj = ev.toObject();
+      Evidence.updateOne({_id: obj._id}, obj, {upsert: true}, function (err, raw) {
+        if (err != null) {
+          console.error('insert result: error: ', err, raw);
+          reject(err);
+        }
+        console.error('insert result: ', err, raw);
+        resolve(raw);
+      });
+    })))
+  .then(() => {process.exit(0)})
+  .catch(err => {process.exit(1)});
