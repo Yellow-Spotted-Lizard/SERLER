@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+
+import BootstrapTable from 'react-bootstrap-table-next';
+
 import axios from 'axios';
 
 function SearchForm(props) {
@@ -34,22 +38,45 @@ class Search extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+          result: []
+        }
     }
 
     display(docs) {
       console.debug(docs);
+      this.setState({result: docs})
     }
 
     render() {
-        return (
-          <div className="App">
-            <header className="App-header">
-              <div>
-                <SearchForm onSearch={this.display.bind(this)}/>
-              </div>
-            </header>
-          </div>
-        );
+      const columns = [{
+          dataField: 'title',
+          text: 'Title'
+        }, {
+          dataField: 'authors',
+          text: 'Authors',
+          formatter: a => a.map(ai => ai.lastName + ', ' + ai.firstName).join('; ')
+        }, {
+          dataField: 'keywords',
+          text: 'Keywords',
+          formatter: k => k.join(', ')
+        }];
+
+      return (
+        <div className="App">
+          {/* <header className="App-header">
+          </header> */}
+          <div>
+            <div>
+              <SearchForm onSearch={this.display.bind(this)}/>
+            </div>
+            <br/> <br/>
+            <div>
+              <BootstrapTable keyField='_id' data={this.state.result} columns={ columns } />
+            </div>
+            </div>
+        </div>
+      );
     }
 }
 
