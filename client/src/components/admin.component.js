@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { Route, Redirect, Switch } from "react-router-dom";
-import { ToggleLink } from "../toggle-link";
+//import { ToggleLink } from "../toggle-link";
 import { GraphQlUrl } from "../data/urls";
 import { AuthPrompt } from "../auth/auth-prompt";
 import { authWrapper } from "../auth/auth-wrapper";
