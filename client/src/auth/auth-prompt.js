@@ -26,8 +26,8 @@ export const AuthPrompt = withRouter(authWrapper(class extends Component {
     render = () => 
         <div className="container-fluid">
             <div className="row">
-                <div className="col bg-dark text-white">
-                    <div className="navbar-brand">SPORTS STORE</div>
+                <div className="col bg-danger text-white">
+                    <div className="navbar-brand">The operation requires an authorisation</div>
                 </div>
             </div>        
             <div className="row">
