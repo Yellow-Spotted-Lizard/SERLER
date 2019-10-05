@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+//import ApolloClient from "apollo-boost";
+//import { ApolloProvider } from "react-apollo";
 import { Route, Redirect, Switch } from "react-router-dom";
 //import { ToggleLink } from "../toggle-link";
-import { GraphQlUrl } from "../data/urls";
+//import { GraphQlUrl } from "../data/urls";
 import { AuthPrompt } from "../auth/auth-prompt";
 import { authWrapper } from "../auth/auth-wrapper";
 import UserList from "./user-list.component";
@@ -12,6 +12,7 @@ export default authWrapper(class extends Component {
 
   constructor(props) {
     super(props);
+    /*
     this.client = new ApolloClient({
       uri: GraphQlUrl,
       request: gqloperation => gqloperation.setContext({
@@ -19,12 +20,12 @@ export default authWrapper(class extends Component {
           Authorization: `Bearer<${this.props.webToken}>`
         },
       })
-    })
+      */
   }
 
   render() {
     return (
-      <ApolloProvider client={this.client}>
+      <div>
         <div>
           <Switch>
             {
@@ -45,7 +46,8 @@ export default authWrapper(class extends Component {
             </button>
           }
         </div>
-      </ApolloProvider>
+      </div>
     );
   }
-})
+}
+)
