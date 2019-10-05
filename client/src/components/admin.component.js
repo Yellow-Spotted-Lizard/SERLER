@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Users extends Component {
+export default class Admin extends Component {
 
     constructor(props) {
         super(props);
@@ -11,7 +11,7 @@ export default class Users extends Component {
           <div className="App">
             <header className="App-header">
               <p>
-                Users
+                Admin
               </p>
             </header>
           </div>

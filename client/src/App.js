@@ -15,7 +15,7 @@ import Submit from "./components/submit.component";
 import QualityCheck from "./components/quality-check.component";
 import Analyze from "./components/analyze.component";
 import RepositorySettings from "./components/repository-settings.component";
-import Users from "./components/users.component";
+import Admin from "./components/admin.component";
 import About from "./components/about.component";
 import Dashboard from "./components/dashboard.component";
 
@@ -51,7 +51,7 @@ class App extends Component {
                     <Link to="/repository-settings" className="nav-link">Repository Settings</Link>
                   </li>
                   <li className="navbar-item">
-                    <Link to="/users" className="nav-link">Users</Link>
+                    <Link to="/admin" className="nav-link">Admin</Link>
                   </li>
                   <li className="navbar-item">
                     <Link to="/about" className="nav-link">About</Link>
@@ -67,7 +67,7 @@ class App extends Component {
             <Route path="/quality-check" component={QualityCheck} />
             <Route path="/analyze" component={Analyze} />
             <Route path="/repository-settings" component={RepositorySettings} />
-            <Route path="/users" component={Users} />
+            <Route path="/admin" component={Admin} />
             <Route path="/about" component={About} />
           </div>
         </Router>
