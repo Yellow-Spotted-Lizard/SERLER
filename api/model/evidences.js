@@ -11,6 +11,8 @@ const evidenceSchema = new mongoose.Schema({
   date: Date,
   keywords: [String],
   abstract: String,
+  researchQuestion: String,
+  result: String,
 });
 
 // use `url` field as key

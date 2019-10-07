@@ -58,7 +58,9 @@ var ev1 = new Evidence({
     "Software development management", 
     "Collaborative work"
   ],
-  date: '2019'
+  date: '2019',
+  researchQuestion: 'this is a placeholder',
+  result: 'result 1',
 });
 
 var ev2 = new Evidence({
@@ -88,7 +90,9 @@ var ev2 = new Evidence({
     'agile software development methodology'
   ],
   date: '2016',
-  abstract: 'Agile software development methodology has been implemented by software industries over a decade ago and well accepted in the practitioner community. However, there is limited understanding on how agile practitioners aware towards implementation of agile practices in software development. Lack of awareness will lead to misunderstandings among agile practitioners and misuse the agile practices. In order to understand the awareness of agile practices, this paper aims to investigate the factors that affect awareness of agile practitioners in implementing agile practices. A systematic literature review (SLR)was conducted in order to classify and define the factors of awareness in agile software development methodology. The review was based on papers between 2002 and December 2014 from seven electronic databases. The relevant papers were included 20 journal articles, 24 conference papers,16 book chapters, 9 workshop papers.Consequently, 69 papers were identified that closely related with a'
+  abstract: 'Agile software development methodology has been implemented by software industries over a decade ago and well accepted in the practitioner community. However, there is limited understanding on how agile practitioners aware towards implementation of agile practices in software development. Lack of awareness will lead to misunderstandings among agile practitioners and misuse the agile practices. In order to understand the awareness of agile practices, this paper aims to investigate the factors that affect awareness of agile practitioners in implementing agile practices. A systematic literature review (SLR)was conducted in order to classify and define the factors of awareness in agile software development methodology. The review was based on papers between 2002 and December 2014 from seven electronic databases. The relevant papers were included 20 journal articles, 24 conference papers,16 book chapters, 9 workshop papers.Consequently, 69 papers were identified that closely related with a',
+  researchQuestion: 'this is another placeholder',
+  result: 'result 2',
 });
 
 var ev3 = new Evidence({

@@ -60,7 +60,31 @@ class Search extends Component {
           dataField: 'keywords',
           text: 'Keywords',
           formatter: k => k.join(', ')
-        }];
+        },
+        {
+          dataField: 'date',
+          text: 'Publish Date',
+          formatter: a => {
+            try {
+              return new Intl.DateTimeFormat('en-NZ', {
+                year: 'numeric', 
+                month: 'short'
+              }).format(new Date(a));
+            }
+            catch {
+              return 'N/A';
+            }
+          },
+        },
+        {
+          dataField: 'researchQuestion',
+          text: 'Research Question',
+        },
+        {
+          dataField: 'result',
+          text: 'Result',
+        },
+      ];
 
       return (
         <div className="App">
