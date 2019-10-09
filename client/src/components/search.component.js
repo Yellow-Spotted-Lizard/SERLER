@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -34,74 +34,67 @@ function SearchForm(props) {
   );
 }
 
-class Search extends Component {
+function Search (props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          result: []
+  const [searchResult, setSearchResult] = useState([]);
+
+  function display(docs) {
+    console.debug('with hook', docs);
+    setSearchResult(docs);
+  }
+
+  const columns = [{
+      dataField: 'title',
+      text: 'Title'
+    }, {
+      dataField: 'authors',
+      text: 'Authors',
+      formatter: a => a.map(ai => ai.lastName + ', ' + ai.firstName).join('; ')
+    }, {
+      dataField: 'keywords',
+      text: 'Keywords',
+      formatter: k => k.join(', ')
+    },
+    {
+      dataField: 'date',
+      text: 'Publish Date',
+      formatter: a => {
+        try {
+          return new Intl.DateTimeFormat('en-NZ', {
+            year: 'numeric', 
+            month: 'short'
+          }).format(new Date(a));
         }
-    }
+        catch {
+          return 'N/A';
+        }
+      },
+    },
+    {
+      dataField: 'researchQuestion',
+      text: 'Research Question',
+    },
+    {
+      dataField: 'result',
+      text: 'Result',
+    },
+  ];
 
-    display(docs) {
-      console.debug(docs);
-      this.setState({result: docs})
-    }
-
-    render() {
-      const columns = [{
-          dataField: 'title',
-          text: 'Title'
-        }, {
-          dataField: 'authors',
-          text: 'Authors',
-          formatter: a => a.map(ai => ai.lastName + ', ' + ai.firstName).join('; ')
-        }, {
-          dataField: 'keywords',
-          text: 'Keywords',
-          formatter: k => k.join(', ')
-        },
-        {
-          dataField: 'date',
-          text: 'Publish Date',
-          formatter: a => {
-            try {
-              return new Intl.DateTimeFormat('en-NZ', {
-                year: 'numeric', 
-                month: 'short'
-              }).format(new Date(a));
-            }
-            catch {
-              return 'N/A';
-            }
-          },
-        },
-        {
-          dataField: 'researchQuestion',
-          text: 'Research Question',
-        },
-        {
-          dataField: 'result',
-          text: 'Result',
-        },
-      ];
-
-      return (
-        <div className="App">
-          {/* <header className="App-header">
-          </header> */}
-          <div>
-            <div>
-              <SearchForm onSearch={this.display.bind(this)}/>
-            </div>
-            <br/> <br/>
-            <div>
-              <BootstrapTable keyField='_id' data={this.state.result} columns={ columns } />
-            </div>
-            </div>
+  return (
+    <div className="App">
+      {/* <header className="App-header">
+      </header> */}
+      <div>
+        <div>
+          <SearchForm onSearch={display}/>
         </div>
-      );
-    }
+        <br/> <br/>
+        <div>
+          <BootstrapTable keyField='_id' data={searchResult} columns={ columns } />
+        </div>
+        </div>
+    </div>
+  );
 }
 
 export default Search;
