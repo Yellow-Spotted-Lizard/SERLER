@@ -11,7 +11,8 @@
     "deploy:local": "cd api && NODE_ENV=production npm start",
     "predeploy:local": "cd client && NODE_ENV=production npm run build",
     "deploy:heroku": "cd api && npm start",
-    "test": "cd api && npm test && cd ../client && npm run test:nowatch",
+    "_comment_test": "cd api && npm test && cd ../client && npm run test:nowatch",
+    "test": "cd api && mocha --exit",
     "postinstall": "cd api && npm install && cd ../client && npm install && CI=false npm run build"
   },
   "repository": {
@@ -34,5 +35,10 @@
     "jsonwebtoken": "^8.5.1",
     "react-apollo": "^3.1.2",
     "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.1"
   }
 }
