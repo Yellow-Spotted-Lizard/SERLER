@@ -12,7 +12,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import axios from 'axios';
 
 function SearchForm(props) {
-  var today = new Date();
+  // var today = new Date();
+  const [date, setDate] = useState(new Date());
 
   const handleSubmit = (event) => {
     // console.debug('/api/v1/evidences/search?title_contains=', event.target.query.value);
@@ -45,9 +46,12 @@ function SearchForm(props) {
         <Col>
           <DatePicker
             name="date_field"
-            selected={today}
-            //onSelect={this.handleSelect} 
-            //onChange={this.handleChange} 
+            selected={date}
+            onSelect={(date) => {
+              setDate(date)
+              // call search 
+            }} 
+            // onChange={this.handleChange} 
           />
         </Col>
       </Form.Row> 
