@@ -14,11 +14,17 @@ import axios from 'axios';
 function SearchForm(props) {
   // var today = new Date();
   const [date, setDate] = useState(new Date());
+  const [queryText, setQueryText] = useState("Start search here..." );
 
   const handleSubmit = (event) => {
     // console.debug('/api/v1/evidences/search?title_contains=', event.target.query.value);
     event.preventDefault();
-    axios.get('/api/v1/evidences/search?title_contains=' + event.target.query.value)
+    runSearch();
+  }
+
+  const runSearch = () => {
+    console.debug('/api/v1/evidences/search?title_contains=', queryText)
+    axios.get('/api/v1/evidences/search?title_contains=' + queryText)
       .then(result => props.onSearch(result.data))
       .catch(e => console.error('failed to search', e));
   }
@@ -27,7 +33,9 @@ function SearchForm(props) {
     <Form onSubmit={handleSubmit}>
       <Form.Row>
         <Col sm={8}>
-          <Form.Control name="query" placeholder="Start search here..." />
+          <Form.Control name="query" placeholder="Start search here..." 
+            onChange={e => setQueryText(e.target.value)}
+          />
         </Col>
         <Col>
           <Button variant="primary" type="submit">
@@ -48,8 +56,8 @@ function SearchForm(props) {
             name="date_field"
             selected={date}
             onSelect={(date) => {
-              setDate(date)
-              // call search 
+              setDate(date);
+              runSearch(); 
             }} 
             // onChange={this.handleChange} 
           />
