@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,6 +12,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import axios from 'axios';
 
 function SearchForm(props) {
+  var today = new Date();
 
   const handleSubmit = (event) => {
     // console.debug('/api/v1/evidences/search?title_contains=', event.target.query.value);
@@ -30,6 +34,23 @@ function SearchForm(props) {
           </Button>
         </Col>
       </Form.Row>
+      <Form.Row>
+        <Col>
+          <label>
+            Date:
+          </label>
+        </Col>
+        </Form.Row>
+      <Form.Row>
+        <Col>
+          <DatePicker
+            name="date_field"
+            selected={today}
+            //onSelect={this.handleSelect} 
+            //onChange={this.handleChange} 
+          />
+        </Col>
+      </Form.Row> 
     </Form>
   );
 }
