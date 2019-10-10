@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const adminService = require('./services/admin-service');
+const studyService = require('./services/study-service');
 
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,5 +39,8 @@ app.use('/api/v1', router);
 
 // Seed users
 adminService.seedUsers(null);
+
+// Seed studies
+studyService.seedStudies(null);
 
 module.exports = app;
