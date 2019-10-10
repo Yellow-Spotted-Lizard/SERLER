@@ -4,6 +4,9 @@ const chaiHttp = require('chai-http');
 const app = require("../app");
 const userService = require("../services/user-service");
 
+var envPath = __dirname + "/../.env.debig"
+require('dotenv').config({path:envPath})
+
 chai.use(chaiHttp);
 chai.should();
 
