@@ -45,15 +45,18 @@ function Search (props) {
 
   const columns = [{
       dataField: 'title',
-      text: 'Title'
+      text: 'Title',
+      sort: true
     }, {
       dataField: 'authors',
       text: 'Authors',
-      formatter: a => a.map(ai => ai.lastName + ', ' + ai.firstName).join('; ')
+      formatter: a => a.map(ai => ai.lastName + ', ' + ai.firstName).join('; '),
+      sort: true
     }, {
       dataField: 'keywords',
       text: 'Keywords',
-      formatter: k => k.join(', ')
+      formatter: k => k.join(', '),
+      sort: true
     },
     {
       dataField: 'date',
@@ -69,14 +72,17 @@ function Search (props) {
           return 'N/A';
         }
       },
+      sort: true
     },
     {
       dataField: 'researchQuestion',
       text: 'Research Question',
+      sort: true
     },
     {
       dataField: 'result',
       text: 'Result',
+      sort: true
     },
   ];
 
