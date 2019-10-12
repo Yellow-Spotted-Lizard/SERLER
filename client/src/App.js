@@ -18,6 +18,7 @@ import RepositorySettings from "./components/repository-settings.component";
 import Admin from "./components/admin.component";
 import About from "./components/about.component";
 import Dashboard from "./components/dashboard.component";
+import AltSearch from "./components/alt-search.component";
 
 class App extends Component {
   render() {
@@ -37,6 +38,9 @@ class App extends Component {
                   </li>
                   <li className="navbar-item">
                     <Link to="/search" className="nav-link">Search</Link>
+                  </li>
+                  <li className="navbar-item">
+                    <Link to="/alt-search" className="nav-link">Alt Search</Link>
                   </li>
                   <li className="navbar-item">
                     <Link to="/submit" className="nav-link">Submit</Link>
@@ -63,6 +67,7 @@ class App extends Component {
             <Route path="/" exact component={Dashboard} />
             <Route path="/browse" component={Browse} />
             <Route path="/search" component={Search} />
+            <Route path="/alt-search" component={AltSearch} />
             <Route path="/submit" component={Submit} />
             <Route path="/quality-check" component={QualityCheck} />
             <Route path="/analyze" component={Analyze} />
