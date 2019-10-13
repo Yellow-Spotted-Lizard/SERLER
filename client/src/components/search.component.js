@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import DatePicker from "react-datepicker";
- 
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,9 +8,12 @@ import BootstrapTable from 'react-bootstrap-table-next';
 
 import axios from 'axios';
 
+import DateRange from './search/date-range';
+import { createQuery, OP } from './search/query';
+import { useJsonState } from './hooks/jsonState';
+
 function SearchForm(props) {
   // var today = new Date();
-  const [date, setDate] = useState(new Date());
   const [queryText, setQueryText] = useState("Start search here..." );
 
   const handleSubmit = (event) => {
@@ -22,11 +22,24 @@ function SearchForm(props) {
     runSearch();
   }
 
+  const [query, queryRef] = useJsonState(() => {
+    const q = createQuery();
+    q.setOp(OP.AND);
+    return q;
+  });
+
+  const titleQuery = query.getQuery(0);
+  titleQuery.setOp(OP.MATCH).setField('title');
+  const dateRangeQuery = query.getQuery(1);
+
+  console.debug(query);
+
   const runSearch = () => {
     console.debug('/api/v1/evidences/search?title_contains=', queryText)
-    axios.get('/api/v1/evidences/search?title_contains=' + queryText)
-      .then(result => props.onSearch(result.data))
-      .catch(e => console.error('failed to search', e));
+    // axios.get('/api/v1/evidences/search?title_contains=' + queryText)
+      // .then(result => props.onSearch(result.data))
+      // .catch(e => console.error('failed to search', e));
+    console.debug(JSON.stringify(query));
   }
 
   return (
@@ -34,7 +47,11 @@ function SearchForm(props) {
       <Form.Row>
         <Col sm={8}>
           <Form.Control name="query" placeholder="Start search here..." 
-            onChange={e => setQueryText(e.target.value)}
+            onChange={e => {
+              // console.debug(e.target);
+              setQueryText(e.target.value); 
+              titleQuery.setValue(e.target.value);
+            }}
           />
         </Col>
         <Col>
@@ -45,22 +62,7 @@ function SearchForm(props) {
       </Form.Row>
       <Form.Row>
         <Col>
-          <label>
-            Date:
-          </label>
-        </Col>
-        </Form.Row>
-      <Form.Row>
-        <Col>
-          <DatePicker
-            name="date_field"
-            selected={date}
-            onSelect={(date) => {
-              setDate(date);
-              runSearch(); 
-            }} 
-            // onChange={this.handleChange} 
-          />
+          <DateRange field='date' query={dateRangeQuery}/>
         </Col>
       </Form.Row> 
     </Form>
