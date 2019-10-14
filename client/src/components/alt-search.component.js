@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import BootstrapTable from 'react-bootstrap-table-next';
+import Divider from '@material-ui/core/Divider';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
-import Conditions from "./conditions";
-import FilterSet from "./filterSet.component";
 
 export default class About extends Component {
 
@@ -60,7 +59,25 @@ export default class About extends Component {
             searchResult: [],
             searchCriteria: {
                 title: ""
-            }
+            },
+            currencies: [
+                {
+                    value: 'USD',
+                    label: '$',
+                },
+                {
+                    value: 'EUR',
+                    label: '€',
+                },
+                {
+                    value: 'BTC',
+                    label: '฿',
+                },
+                {
+                    value: 'JPY',
+                    label: '¥',
+                },
+            ]
         }
     }
 
@@ -117,35 +134,95 @@ export default class About extends Component {
         return (
             <form onSubmit={this.onSubmit}>
                 <div>
+                    <TextField
+                        id="title-field"
+                        label="Title"
+                        value={this.state.queryText}
+                        onChange={this.updateQueryTextValue}
+                        onSubmit={this.onSearch}
+                        margin="normal"
+                        variant="outlined"
+                        fullWidth
+                    />
+                    <Button variant="contained" color="primary"
+                        onClick={this.onSearch}
+                    >
+                        Search
+                    </Button>
+                </div>
+                <div className="py-3">
+                    <Divider variant="inset" />
+                    <h3>Filters</h3>
                     <Form.Row>
                         <Col>
                             <TextField
-                                id="title-field"
-                                label="Title"
-                                value={this.state.queryText}
-                                onChange={this.updateQueryTextValue}
-                                onSubmit={this.onSearch}
-                                margin="normal"
-                                variant="outlined"
-                                fullWidth
-                            />
-                        </Col>
-                        <Col xs lg="3">
-                            <TextField
-                                id="outlined-select-condition"
+                                id="outlined-select-currency-native"
                                 select
-                                label="Condition"
+                                label="Native select"
+                                //className={classes.textField}
+                                //value={values.currency}
+                                //onChange={handleChange('currency')}
                                 SelectProps={{
                                     native: true,
                                     MenuProps: {
+                                        //className: classes.menu,
                                     },
                                 }}
-                                helperText="Please specify the condition"
+                                helperText="Please select your currency"
                                 margin="normal"
                                 variant="outlined"
-                                fullWidth
                             >
-                                {Conditions.map(option => (
+                                {this.state.currencies.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </TextField>
+                        </Col>
+                        <Col>
+                        <TextField
+                                id="outlined-select-currency-native"
+                                select
+                                label="Native select"
+                                //className={classes.textField}
+                                //value={values.currency}
+                                //onChange={handleChange('currency')}
+                                SelectProps={{
+                                    native: true,
+                                    MenuProps: {
+                                        //className: classes.menu,
+                                    },
+                                }}
+                                helperText="Please select your currency"
+                                margin="normal"
+                                variant="outlined"
+                            >
+                                {this.state.currencies.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </TextField>
+                        </Col>
+                        <Col>
+                        <TextField
+                                id="outlined-select-currency-native"
+                                select
+                                label="Native select"
+                                //className={classes.textField}
+                                //value={values.currency}
+                                //onChange={handleChange('currency')}
+                                SelectProps={{
+                                    native: true,
+                                    MenuProps: {
+                                        //className: classes.menu,
+                                    },
+                                }}
+                                helperText="Please select your currency"
+                                margin="normal"
+                                variant="outlined"
+                            >
+                                {this.state.currencies.map(option => (
                                     <option key={option.value} value={option.value}>
                                         {option.label}
                                     </option>
@@ -153,13 +230,7 @@ export default class About extends Component {
                             </TextField>
                         </Col>
                     </Form.Row>
-                    <Button variant="contained" color="primary"
-                        onClick={this.onSearch}
-                    >
-                        Search
-                    </Button>
                 </div>
-                <FilterSet/>
                 <div className="py-3">
                     <BootstrapTable keyField='_id'
                         data={this.state.searchResult}
