@@ -6,7 +6,7 @@ const url = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 
 mongoose
   //.connect(url, {dbName: db_name})
-  .connect(url + '/' + db_name,  { useNewUrlParser: true }) 
+  .connect(url,  { dbName: db_name, useNewUrlParser: true }) 
   .catch(err => {
     console.error(`cannot connect to mongodb: ${url}, db name: ${db_name}`);
   });

@@ -1,18 +1,18 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const adminService = require('./services/admin-service');
 const studyService = require('./services/study-service');
 
-// var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var evidencesRouter = require('./routes/evidences');
-var adminRouter = require('./routes/admin');
+// const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const evidencesRouter = require('./routes/evidences');
+const adminRouter = require('./routes/admin');
 
 const auth = require("./auth");
 
-var app = express();
+const app = express();
 const cors = require('cors');
 app.use(cors());
 
@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-var router = express.Router();
+const router = express.Router();
 router.use('/users', usersRouter);
 router.use('/evidences', evidencesRouter);
 router.use('/admin', adminRouter);

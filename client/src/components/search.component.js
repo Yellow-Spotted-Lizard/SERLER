@@ -24,7 +24,11 @@ function SearchForm(props) {
 
   const runSearch = () => {
     console.debug('/api/v1/evidences/search?title_contains=', queryText)
-    axios.get('/api/v1/evidences/search?title_contains=' + queryText)
+    axios.get('/api/v1/evidences/search', {
+        params: {
+          query: {op: '$and', queries: [{op: '$match', field: 'title', value: queryText}]},
+        }
+      })
       .then(result => props.onSearch(result.data))
       .catch(e => console.error('failed to search', e));
   }

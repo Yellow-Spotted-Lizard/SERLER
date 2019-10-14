@@ -1,7 +1,8 @@
 const express = require('express');
 const db = require('../model/db');
-const Evidence = require('../model/evidences')
-var debug = require('debug')('api:route:evidences');
+const Evidence = require('../model/evidences');
+const queryUtil = require('../util/query');
+const debug = require('debug')('api:route:evidences');
 
 const router = express.Router();
 
@@ -21,11 +22,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/search', function(req, res, next) {
-  let title_contains = req.query.title_contains;
+  let query = JSON.parse(req.query.query);
+  // console.log(query);
   let limit = req.query.limit || 20;
 
+  let mq = queryUtil.queryToMongoDB(query);
+  // console.log(mq);
+  // res.json(mq);
+  // return;
+
   Evidence
-  .find({"title": { "$regex": title_contains, "$options": "i" }})
+  .find(mq)
   .limit(limit)
   .exec()
   .then(evs => {
