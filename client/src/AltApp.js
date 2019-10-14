@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { AuthProviderImpl } from "./auth/auth-provider-impl";
-//import Search from "./components/search.component";
+import Search from "./components/search.component";
 import AltSearch from "./components/alt-search.component";
 import Admin from "./components/admin.component";
 import About from "./components/about.component";
@@ -25,7 +25,10 @@ class AltApp extends Component {
                                 <ul className="navbar-nav mr-auto">
                                     <li className="navbar-item">
                                         <Link to="/search" className="nav-link">Search</Link>
-                                    </li>                                 
+                                    </li>
+                                    <li className="navbar-item">
+                                        <Link to="/debug-search" className="nav-link">Debug search</Link>
+                                    </li>                                    
                                     <li className="navbar-item">
                                         <Link to="/admin" className="nav-link">Admin</Link>
                                     </li>
@@ -38,6 +41,7 @@ class AltApp extends Component {
                         <br />
                         <Route path="/" exact component={AltSearch} />
                         <Route path="/search" component={AltSearch} />
+                        <Route path="/debug-search" component={Search} />
                         <Route path="/admin" component={Admin} />
                         <Route path="/about" component={About} />
                     </div>
