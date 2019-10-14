@@ -27,7 +27,7 @@ class AltApp extends Component {
                                         <Link to="/search" className="nav-link">Search</Link>
                                     </li>
                                     <li className="navbar-item">
-                                        <Link to="/debug-search" className="nav-link">Debug search</Link>
+                                        <Link to="/alt-search" className="nav-link">Alt search</Link>
                                     </li>                                    
                                     <li className="navbar-item">
                                         <Link to="/admin" className="nav-link">Admin</Link>
@@ -40,8 +40,8 @@ class AltApp extends Component {
                         </nav>
                         <br />
                         <Route path="/" exact component={AltSearch} />
-                        <Route path="/search" component={AltSearch} />
-                        <Route path="/debug-search" component={Search} />
+                        <Route path="/search" component={Search} />
+                        <Route path="/alt-search" component={AltSearch} />
                         <Route path="/admin" component={Admin} />
                         <Route path="/about" component={About} />
                     </div>
