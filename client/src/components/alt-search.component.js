@@ -8,6 +8,7 @@ import axios from 'axios';
 import Conditions from "./conditions";
 import FilterSet from "./filterSet.component";
 import Calendar from "./calendar.component";
+import Title from "./title.component";
 
 export default class About extends Component {
 
@@ -58,38 +59,12 @@ export default class About extends Component {
                 sort: true
             },
             ],
-            searchResult: [],
-            searchCriteria: {
-                title: ""
-            }
+            searchResult: []
         }
-    }
-
-    componentDidMount = () => {
-        let data = localStorage.getItem("serler_search_criteria");
-        if (data != null) {
-            let criteria = JSON.parse(data);
-            this.setState({ queryText: criteria.title });
-            this.searchByCriteria(criteria);
-        }
-    }
-
-    updateQueryTextValue = (event) => {
-        this.setState({ queryText: event.target.value });
-        this.setState({ searchCriteria: { title: event.target.value } });
-    }
-
-    onSearch = (event) => {
-        this.searchByTitle(event);
-        this.saveCriteriaToLS();
     }
 
     onSubmit = (event) => {
-        this.saveCriteriaToLS();
-    }
-
-    saveCriteriaToLS = () => {
-        localStorage.setItem("serler_search_criteria", JSON.stringify(this.state.searchCriteria));
+ //       this.saveCriteriaToLS();
     }
 
     searchByTitle = (event) => {
@@ -117,49 +92,7 @@ export default class About extends Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
-                <div>
-                    <Form.Row>
-                        <Col>
-                            <TextField
-                                id="title-field"
-                                label="Title"
-                                value={this.state.queryText}
-                                onChange={this.updateQueryTextValue}
-                                onSubmit={this.onSearch}
-                                margin="normal"
-                                variant="outlined"
-                                fullWidth
-                            />
-                        </Col>
-                        <Col xs lg="3">
-                            <TextField
-                                id="outlined-select-condition"
-                                select
-                                label="Condition"
-                                SelectProps={{
-                                    native: true,
-                                    MenuProps: {
-                                    },
-                                }}
-                                helperText="Please specify the condition"
-                                margin="normal"
-                                variant="outlined"
-                                fullWidth
-                            >
-                                {Conditions.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </TextField>
-                        </Col>
-                    </Form.Row>
-                    <Button variant="contained" color="primary"
-                        onClick={this.onSearch}
-                    >
-                        Search
-                    </Button>
-                </div>
+                <Title />
                 <Calendar />
                 <FilterSet />
                 <div className="py-3">
