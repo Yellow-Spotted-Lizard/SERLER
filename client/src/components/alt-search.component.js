@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Conditions from "./conditions";
 import FilterSet from "./filterSet.component";
+import Calendar from "./calendar.component";
 
 export default class About extends Component {
 
@@ -159,7 +160,8 @@ export default class About extends Component {
                         Search
                     </Button>
                 </div>
-                <FilterSet/>
+                <Calendar />
+                <FilterSet />
                 <div className="py-3">
                     <BootstrapTable keyField='_id'
                         data={this.state.searchResult}
