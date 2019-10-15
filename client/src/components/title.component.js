@@ -11,34 +11,37 @@ export default class Title extends Component {
         super(props);
         this.state = {
             queryText: "",
-            searchCriteria: {
-                title: ""
-            }
+            condition: "Contains"
         }        
     }
 
     componentDidMount = () => {
-        let data = localStorage.getItem("serler_search_criteria");
-        if (data != null) {
-            let criteria = JSON.parse(data);
-            this.setState({ queryText: criteria.title });
-            //this.searchByCriteria(criteria);
+        let queryTextData = localStorage.getItem("serler_queryText");
+        if (queryTextData != null) {
+            let queryText = JSON.parse(queryTextData);
+            this.setState({ queryText: queryText });
+        }
+
+        let conditionData = localStorage.getItem("serler_condition");
+        if (conditionData != null) {
+            let condition = JSON.parse(conditionData);
+            this.setState({ condition: condition });
         }
     }
 
     onSearch = (event) => {
-       // this.searchByTitle(event);
-        this.saveCriteriaToLS();
-    }
-
-    saveCriteriaToLS = () => {
-        localStorage.setItem("serler_search_criteria", JSON.stringify(this.state.searchCriteria));
+       // TODO!!!
     }
 
     updateQueryTextValue = (event) => {
         this.setState({ queryText: event.target.value });
-        this.setState({ searchCriteria: { title: event.target.value } });
+        localStorage.setItem("serler_queryText", JSON.stringify(event.target.value));
     }    
+
+    onConditionChange = (event) => {
+        this.setState({ condition: event.target.value });
+        localStorage.setItem("serler_condition", JSON.stringify(event.target.value));
+    }
 
     render() {
         return (
@@ -70,6 +73,8 @@ export default class Title extends Component {
                             margin="normal"
                             variant="outlined"
                             fullWidth
+                            value={ this.state.condition }
+                            onChange={ this.onConditionChange }                    
                         >
                             {Conditions.map(option => (
                                 <option key={option.value} value={option.value}>
@@ -80,7 +85,7 @@ export default class Title extends Component {
                     </Col>
                 </Form.Row>
                 <Button variant="contained" color="primary"
-                    onClick={this.onSearch}
+                    onClick={ this.onSearch }
                 >
                     Search
                 </Button>
