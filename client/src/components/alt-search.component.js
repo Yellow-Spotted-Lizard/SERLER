@@ -44,6 +44,11 @@ export default class About extends Component {
                 sort: true
             },
             {
+                dataField: 'method',
+                text: 'SE method',
+                sort: true
+            },
+            {
                 dataField: 'researchQuestion',
                 text: 'Research Question',
                 sort: true
@@ -58,12 +63,20 @@ export default class About extends Component {
         }
     }
 
-    onSubmit = (event) => {
- //       this.saveCriteriaToLS();
-    }
+    onSearch = () => {
+        // Get search criteria
+        
+        // -- Title
 
-    searchByTitle = (event) => {
-        axios.get('/api/v1/evidences/search?title_contains=' + this.state.queryText)
+        // -- Calendar
+
+        // -- Filters
+
+
+        // Prepare query
+
+        // Run query
+        axios.get('/api/v1/evidences')
             .then(response => {
                 this.setState({ searchResult: response.data });
             })
@@ -72,22 +85,10 @@ export default class About extends Component {
             });
     }
 
-    searchByCriteria = (criteria) => {
-        if (criteria != null && criteria.title != null) {
-            axios.get('/api/v1/evidences/search?title_contains=' + criteria.title)
-                .then(response => {
-                    this.setState({ searchResult: response.data });
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
-    }
-
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <Title />
+            <div>
+                <Title callback={this.onSearch} />
                 <Calendar />
                 <FilterSet />
                 <div className="py-3">
@@ -95,7 +96,7 @@ export default class About extends Component {
                         data={this.state.searchResult}
                         columns={this.state.columns} />
                 </div>
-            </form>
+            </div>
         );
     }
 }

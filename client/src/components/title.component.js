@@ -30,7 +30,7 @@ export default class Title extends Component {
     }
 
     onSearch = (event) => {
-       // TODO!!!
+        this.props.callback();
     }
 
     updateQueryTextValue = (event) => {
