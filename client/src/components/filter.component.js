@@ -12,8 +12,12 @@ export default class Filter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filterValues: Methods
+            filterValues: Methods            
         }
+    }
+
+    componentDidMount = () => {
+    
     }
 
     onFieldChange = (event) => {
@@ -38,7 +42,7 @@ export default class Filter extends Component {
                             MenuProps: {
                             },
                         }}
-                        helperText="Please select the field"
+                        helperText={"Please select the field " + "(Debug: filter_id = '" + this.props.filter_id + "')"}
                         margin="normal"
                         variant="outlined"
                         fullWidth
