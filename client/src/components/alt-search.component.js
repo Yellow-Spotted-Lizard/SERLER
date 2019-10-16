@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import BootstrapTable from 'react-bootstrap-table-next';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import axios from 'axios';
-import Conditions from "./conditions";
 import FilterSet from "./filterSet.component";
 import Calendar from "./calendar.component";
 import Title from "./title.component";
