@@ -9,42 +9,129 @@ export default class Calendar extends Component {
 
     constructor(props) {
         super(props);
+
+        // Creating the list of years
         var years = [];
         years.push({ value: "not set", label: "Not set" })
         for (var i = 1970; i < 2020; i++) {
             years.push({ value: i, label: i });
         }
+
         this.state = {
+            // Range drop-down list
+            rangeMode: 'all',
+
+            // From year drop-down list
             fromYears: years,
             fromValue: 'not set',
+            fromDisabled: true,
+
+            // To year drop-down list
             toYears: years,
             toValue: 'not set',
-            fromDisabled: true,
-            toDisabled: true
+            toDisabled: true,
+        }
+    }
+
+    componentDidMount = () => {
+        let rangeModeData = localStorage.getItem("serler_range_mode");
+        if (rangeModeData != null) {
+            let rangeMode = JSON.parse(rangeModeData);
+            this.setState({ rangeMode: rangeMode });
+        }
+
+        let fromValueData = localStorage.getItem("serler_from_year");
+        if (fromValueData != null) {
+            let fromValue = JSON.parse(fromValueData);
+            this.setState({ fromValue: fromValue });
+        }
+
+        let fromDisabledData = localStorage.getItem("serler_from_disabled");
+        if (fromDisabledData != null) {
+            let fromDisabled = JSON.parse(fromDisabledData);
+            this.setState({ fromDisabled: fromDisabled });
+        }
+
+        let toValueData = localStorage.getItem("serler_to_year");
+        if (toValueData != null) {
+            let toValue = JSON.parse(toValueData);
+            this.setState({ toValue: toValue });
+        }
+
+        let toDisabledData = localStorage.getItem("serler_to_disabled");
+        if (toDisabledData != null) {
+            let toDisabled = JSON.parse(toDisabledData);
+            this.setState({ toDisabled: toDisabled });
         }
     }
 
     onRangeModeChange = (event) => {
+        var rangeMode = event.target.value;
+        var fromDisabled = false;
+        var fromValue = 'not set';
+        var toDisabled = false;
+        var toValue = 'not set';
+
         switch (event.target.value) {
-            case 'all':
-                this.setState({ fromDisabled: true, fromValue: 'not set', toDisabled: true, toValue: 'not set' });
+            case 'all':                
+                fromDisabled = true; 
+                fromValue = 'not set'; 
+                toDisabled = true; 
+                toValue = 'not set';
                 break;
             case 'today-5':
-                this.setState({ fromDisabled: true, fromValue: '2014', toDisabled: true, toValue: '2019' });
+                fromDisabled = true;
+                fromValue = '2014';
+                toDisabled = true;
+                toValue = '2019';
                 break;
             case 'today-10':
-                this.setState({ fromDisabled: true, fromValue: '2009', toDisabled: true, toValue: '2019' });
+                fromDisabled = true;
+                fromValue = '2009';
+                toDisabled = true;
+                toValue = '2019';
                 break;
             case 'after':
-                this.setState({ fromDisabled: false, fromValue: '2019', toDisabled: true, toValue: 'not set' });
+                fromDisabled = false;
+                fromValue = '2019';
+                toDisabled = true;
+                toValue = 'not set';
                 break;
             case 'before':
-                this.setState({ fromDisabled: true, fromValue: 'not set', toDisabled: false, toValue: '2019' });
+                fromDisabled = true;
+                fromValue = 'not set'; 
+                toDisabled = false;
+                toValue = '2019';
                 break;
             case 'range':
-                this.setState({ fromDisabled: false,  fromValue: '2019', toDisabled: false, toValue: '2019' });
+                fromDisabled = false;
+                fromValue = '2019';
+                toDisabled = false;
+                toValue = '2019';
+                break;
+            default:
                 break;
         }
+
+        // Change state
+        this.setState({ rangeMode: rangeMode, fromDisabled: fromDisabled, fromValue: fromValue, toDisabled: toDisabled, toValue: toValue });
+
+        // Save the state
+        localStorage.setItem("serler_range_mode", JSON.stringify(rangeMode));
+        localStorage.setItem("serler_from_year", JSON.stringify(fromValue));
+        localStorage.setItem("serler_from_disabled", JSON.stringify(fromDisabled));
+        localStorage.setItem("serler_to_year", JSON.stringify(toValue));
+        localStorage.setItem("serler_to_disabled", JSON.stringify(toDisabled));
+    }
+
+    onFromYearChange = (event) => {
+        this.setState({ fromValue: event.target.value });
+        localStorage.setItem("serler_from_year", JSON.stringify(event.target.value));
+    }
+
+    onToYearChange = (event) => {
+        this.setState({ toValue: event.target.value });
+        localStorage.setItem("serler_to_year", JSON.stringify(event.target.value));
     }
 
     render() {
@@ -60,6 +147,7 @@ export default class Calendar extends Component {
                             select
                             label="Range"
                             onChange={this.onRangeModeChange}
+                            value={this.state.rangeMode}
                             SelectProps={{
                                 native: true,
                                 MenuProps: {
@@ -82,6 +170,7 @@ export default class Calendar extends Component {
                             id="outlined-select-from"
                             select
                             label="From"
+                            onChange={this.onFromYearChange}
                             disabled={this.state.fromDisabled}
                             value={this.state.fromValue}
                             SelectProps={{
@@ -106,6 +195,7 @@ export default class Calendar extends Component {
                             id="outlined-select-to"
                             select
                             label="To"
+                            onChange={this.onToYearChange}
                             disabled={this.state.toDisabled}
                             value={this.state.toValue}
                             SelectProps={{
