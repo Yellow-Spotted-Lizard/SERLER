@@ -43,6 +43,4 @@ adminService.seedUsers(null);
 // Seed studies
 studyService.seedStudies(null);
 
-module.exports = app;
-
-// Test comment
+module.exports = app
