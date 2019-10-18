@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "node"
+
+services:
+  - mongodb
+
+deploy:
+  provider: heroku
+  api_key: 9439cfbd-fa1f-450e-b67e-ac3fcd9c252a
+  on: develop
+  app:
+    develop: yellow-spotted-lizard-serler
+
+notifications:
+  slack:
+    rooms:
+      - yellowspottedlizard:9RgcTIh2nvbwzsn6tIvvV1yE#travis-ci
+    on_success: always
+    on_failure: always

@@ -1,0 +1,47 @@
+{
+  "name": "SERLER",
+  "version": "1.0.0",
+  "description": "Software Engineering Research Lab Evidence Repository (SERLER)",
+  "main": "index.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "concurrently \"cd api && npm start\" \"cd client && npm start\"",
+    "deploy:local": "cd api && NODE_ENV=production npm start",
+    "predeploy:local": "cd client && NODE_ENV=production npm run build",
+    "deploy:heroku": "cd api && npm start",
+    "_comment_test": "cd api && npm test && cd ../client && npm run test:nowatch",
+    "test": "cd api && mocha --exit",
+    "postinstall": "cd api && npm install && cd ../client && npm install && CI=false npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yellow-Spotted-Lizard/SERLER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yellow-Spotted-Lizard/SERLER/issues"
+  },
+  "homepage": "https://github.com/Yellow-Spotted-Lizard/SERLER#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "apollo-boost": "^0.4.4",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
+    "mdbreact": "^4.21.0",
+    "react-apollo": "^3.1.2",
+    "react-datepicker": "^2.9.6",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.1"
+  }
+}
