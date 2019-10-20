@@ -166,6 +166,31 @@ exports.getInitialStudyList = function() {
         ],
         method: 'Interview Survey',
     }
+
+    var study14 = {
+        authors: [{
+                lastName: 'Reyna',
+                firstName: 'A'
+            },
+            {
+                lastName: 'Martín',
+                firstName: 'C'
+            },
+            {
+                lastName: 'Chen',
+                firstName: 'J'
+            }
+        ],
+        title: 'On blockchain and its integration with IOT. Challenges and opportunities',
+        date: '2018',
+        url: 'https://doi.org/https://doi.org/10.1016/j.future.2018.05.046',
+        keywords: [
+            'Blockchain',
+            'Insurance',
+            'IoT'
+        ],
+        method: 'Interview Survey',
+    }
     var studyList = [];
     studyList.push(study1);
     studyList.push(study2);
@@ -173,6 +198,7 @@ exports.getInitialStudyList = function() {
     studyList.push(study4);
     studyList.push(study5);
     studyList.push(study6);
+    studyList.push(study14);
 
     return studyList;
 }
