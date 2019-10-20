@@ -1,17 +1,15 @@
 var assert = require('assert');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const chaiThings = require('chai-things');
 const app = require("../app");
 
 var envPath = __dirname + "/../.env.debug"
 require('dotenv').config({path:envPath})
 
 chai.use(chaiHttp);
+chai.use(chaiThings);
 chai.should();
-chai.use(require('chai-things'));
-
-// getInitialUserList
-
 
 describe('evidenceServices', function() {
   describe('search title', function() {
