@@ -3,6 +3,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiThings = require('chai-things');
 const app = require("../app");
+const studyService = require('../services/study-service');
 
 var envPath = __dirname + "/../.env.debug"
 require('dotenv').config({path:envPath})
@@ -11,9 +12,13 @@ chai.use(chaiHttp);
 chai.use(chaiThings);
 chai.should();
 
-/*
-
 describe('evidenceServices', function() {
+  before((done) => {
+    setTimeout(() => {
+      done();
+    }, 1000);
+  })
+
   describe('search title', function() {
      it("should match title", (done) => {
       chai.request(app)
@@ -25,8 +30,8 @@ describe('evidenceServices', function() {
               res.should.have.status(200);
               res.body.should.be.a('array');
               res.body.should.be.lengthOf(1);
-           });
-      done();
+              done();
+          })
     });  
   });
 });
@@ -57,8 +62,8 @@ describe('evidenceServices', function() {
               res.should.have.status(200);
               res.body.should.be.a('array');
               res.body.should.be.lengthOf(1);
-           });
-      done();
+              done();
+           })
     });  
   });
 });
@@ -99,8 +104,8 @@ describe('evidenceServices', function() {
               res.should.have.status(200);
               res.body.should.be.a('array');
               res.body.should.be.lengthOf(3);
-           });
-      done();
+              done();
+           })
     });  
   });
 });
@@ -123,8 +128,8 @@ describe('evidenceServices', function() {
               res.should.have.status(200);
               res.body.should.be.a('array');
               res.body.should.be.lengthOf(6);
-           });
-      done();
+              done();
+           })
     });  
   });
 });
@@ -139,15 +144,15 @@ describe('evidenceServices', function() {
               {
                 op:"$eq",
                 field:"authors",
-                value:"buchan",
+                value:"Jim Buchan",
             })
           })
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(5);
+              done();
            });
-      done();
     });  
   });
 });
@@ -168,9 +173,9 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(5);
+              done();
            });
-      done();
     });  
   });
 });
@@ -192,8 +197,8 @@ describe('evidenceServices', function() {
               res.should.have.status(200);
               res.body.should.be.a('array');
               res.body.should.be.lengthOf(1);
+              done();
            });
-      done();
     });  
   });
 });
@@ -248,13 +253,13 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(5);
               res.body.should.be.to.include.something.that.has.property('title', 'Alignment of Stakeholder Expectations About User Involvement in Agile Software Development');
               res.body.should.be.to.include.something.that.has.property('title', 'Real Time Agile Metrics for Measuring Team Performance.');
+              done();
            });
-      done();
     });  
   });
 });
-*/
+
 
