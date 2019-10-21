@@ -14,7 +14,9 @@ chai.should();
 
 describe('evidenceServices', function() {
   before((done) => {
-    studyService.seedStudies(null).then(done());
+    setTimeout(() => {
+      done();
+    }, 1000);
   })
 
   describe('search title', function() {

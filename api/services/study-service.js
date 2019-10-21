@@ -435,10 +435,11 @@ exports.seedStudies = function (res) {
     return Evidence.findOne({ title: '# Real Time Agile Metrics for Measuring Team Performance.' }, function(err, evidence) {
         if (err) {
             console.info(err);
+            return Promise.reject(err);
         } else {
             if (evidence == null) {
                 var studyList = studyService.getInitialStudyList();
-                return Promise.all(studyList.map(function(value, index, array) {
+                Promise.all(studyList.map(function(value, index, array) {
                     var evidence = new Evidence();
                     evidence.title = value.title;
                     evidence.authors = value.authors;
@@ -466,11 +467,13 @@ exports.seedStudies = function (res) {
                     if (res != null) {
                         res.status(200).json({ 'evidence': 'evidence added successfully' });
                     }
+                    return Promise.resolve(true);
                 })
                 .catch(err => {
                     if (res != null) {
                         res.status(400).send('Unable to add new evidence. Error: ' + err.message);
                     }
+                    return Promise.reject(err);
                 });
             } else {
                 if (res != null) {
@@ -479,5 +482,6 @@ exports.seedStudies = function (res) {
                 return Promise.resolve(true);
             }
         }
-    });
+    })
+    .exec();
 }
