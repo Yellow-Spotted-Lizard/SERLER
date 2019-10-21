@@ -11,8 +11,6 @@ chai.use(chaiHttp);
 chai.use(chaiThings);
 chai.should();
 
-/*
-
 describe('evidenceServices', function() {
   describe('search title', function() {
      it("should match title", (done) => {
@@ -139,13 +137,13 @@ describe('evidenceServices', function() {
               {
                 op:"$eq",
                 field:"authors",
-                value:"buchan",
+                value:"Jim Buchan",
             })
           })
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(4);
            });
       done();
     });  
@@ -168,7 +166,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(4);
            });
       done();
     });  
@@ -248,7 +246,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(3);
+              res.body.should.be.lengthOf(4);
               res.body.should.be.to.include.something.that.has.property('title', 'Alignment of Stakeholder Expectations About User Involvement in Agile Software Development');
               res.body.should.be.to.include.something.that.has.property('title', 'Real Time Agile Metrics for Measuring Team Performance.');
            });
@@ -256,5 +254,5 @@ describe('evidenceServices', function() {
     });  
   });
 });
-*/
+
 
