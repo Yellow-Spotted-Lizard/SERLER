@@ -68,6 +68,7 @@ describe('evidenceServices', function() {
   });
 });
 
+/*
 describe('evidenceServices', function() {
   describe('search date', function() {
      it("should match date range", (done) => {
@@ -109,7 +110,7 @@ describe('evidenceServices', function() {
     });  
   });
 });
-
+*/
 
 describe('evidenceServices', function() {
   describe('search keywords', function() {
