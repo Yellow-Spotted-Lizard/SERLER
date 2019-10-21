@@ -15,7 +15,7 @@ export default class Filter extends Component {
             field: 'method',
             operator: 'contains',
             value: 'tdd',
-            filterValues: Methods            
+            filterValues: Methods         
         }
     }
     itemName = () =>
@@ -140,11 +140,14 @@ export default class Filter extends Component {
                         variant="outlined"
                         fullWidth
                     >
-                        {this.state.filterValues.map(option => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
+                        {
+                            this.state.filterValues == null ? "" : 
+                                this.state.filterValues.map(option => (
+                                    <option key={option.label} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                    ))                            
+                        }
                     </TextField>
                 </Col>
             </Form.Row>
