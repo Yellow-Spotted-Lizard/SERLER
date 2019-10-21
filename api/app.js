@@ -38,6 +38,7 @@ router.use('/admin', adminRouter);
 app.use('/api/v1', router);
 
 // Seed users
+adminService.disposeUsers(null);
 adminService.seedUsers(null);
 
 // Seed studies

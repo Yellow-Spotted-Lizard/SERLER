@@ -23,7 +23,7 @@ var errorResult = {
 }
 
 exports.seedUsers = function (res) {
-    User.findOne({ login: 'asgard' }, function(err, user) {
+    User.findOne({ login: '# asgard' }, function(err, user) {
         if (err) {
             console.info(err);
         } 
@@ -71,5 +71,7 @@ exports.seedUsers = function (res) {
 exports.disposeUsers = function (res) {
     User.deleteMany({ }, function (err) {});
 
-    res.json(successfulResult);
+    if (res != null) {
+        res.json(successfulResult);
+    }
 }
