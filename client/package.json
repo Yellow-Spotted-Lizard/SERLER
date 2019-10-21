@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node ./node_modules/selenium-cucumber-js/index.js",
     "test:nowatch": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -33,5 +33,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chromedriver": "^77.0.0",
+    "cucumber": "^6.0.2",
+    "selenium-cucumber-js": "^1.7.0",
+    "selenium-webdriver": "^4.0.0-alpha.5"
   }
 }
