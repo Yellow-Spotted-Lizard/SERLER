@@ -432,13 +432,13 @@ exports.disposeStudies = function (res) {
 
 
 exports.seedStudies = function (res) {
-    Evidence.findOne({ title: '# Real Time Agile Metrics for Measuring Team Performance.' }, function(err, evidence) {
+    return Evidence.findOne({ title: '# Real Time Agile Metrics for Measuring Team Performance.' }, function(err, evidence) {
         if (err) {
             console.info(err);
         } else {
             if (evidence == null) {
                 var studyList = studyService.getInitialStudyList();
-                Promise.all(studyList.map(function(value, index, array) {
+                return Promise.all(studyList.map(function(value, index, array) {
                     var evidence = new Evidence();
                     evidence.title = value.title;
                     evidence.authors = value.authors;
@@ -476,6 +476,7 @@ exports.seedStudies = function (res) {
                 if (res != null) {
                     res.json(successfulResult);
                 }
+                return Promise.resolve(true);
             }
         }
     });
