@@ -154,7 +154,7 @@ export default class About extends Component {
             console.log('ffilters[' + i + '].value = ' + filters[i].value);
         }
 
-        var query = "query: " + JSON.stringify({
+        var query = JSON.stringify({
             op: "$and",
             queries: [
                 {
@@ -173,7 +173,11 @@ export default class About extends Component {
         console.log(query);
 
         // Prepare and run query
-        axios.get('/api/v1/evidences')
+        axios.get('/api/v1/evidences/search', {
+                params: {
+                    query: query,
+                }
+            })
             .then(response => {
                 this.setState({ searchResult: response.data });
             })

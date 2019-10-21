@@ -27,7 +27,7 @@ router.get('/search', function(req, res, next) {
   let limit = req.query.limit || 20;
 
   let mq = queryUtil.queryToMongoDB(query);
-  // console.log(mq);
+  debug('query for MongoDB:', mq);
   // res.json(mq);
   // return;
 
