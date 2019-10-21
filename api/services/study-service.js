@@ -158,7 +158,7 @@ exports.getInitialStudyList = function() {
         ],
         title: 'Effective team onboarding in Agile software development: techniques and goals',
         date: '2018',
-        url: 'http://doi.acm.org/10.1145/3210459.3210465',
+        url: 'https://arxiv.org/pdf/1907.10206.pdf',
         keywords: [
             'Agile teams',
             'onboarding',
