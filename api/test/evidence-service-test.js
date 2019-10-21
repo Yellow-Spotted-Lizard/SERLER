@@ -1,17 +1,15 @@
 var assert = require('assert');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const chaiThings = require('chai-things');
 const app = require("../app");
 
 var envPath = __dirname + "/../.env.debug"
 require('dotenv').config({path:envPath})
 
 chai.use(chaiHttp);
+chai.use(chaiThings);
 chai.should();
-chai.use(require('chai-things'));
-
-// getInitialUserList
-
 
 describe('evidenceServices', function() {
   describe('search title', function() {
@@ -146,7 +144,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
            });
       done();
     });  
@@ -169,7 +167,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
            });
       done();
     });  
@@ -250,7 +248,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
               res.body.should.be.to.include.something.that.has.property('title', 'Alignment of Stakeholder Expectations About User Involvement in Agile Software Development');
               res.body.should.be.to.include.something.that.has.property('title', 'Real Time Agile Metrics for Measuring Team Performance.');
            });
