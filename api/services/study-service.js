@@ -37,7 +37,7 @@ exports.getInitialStudyList = function() {
       'alignment',
       'expectations'
     ],
-    method: 'agile',
+    method: 'TDD',
   };
 
   // Study 2
@@ -71,7 +71,7 @@ exports.getInitialStudyList = function() {
       abstract: 'Agile software development methodology has been implemented by software industries over a decade ago and well accepted in the practitioner community. However, there is limited understanding on how agile practitioners aware towards implementation of agile practices in software development. Lack of awareness will lead to misunderstandings among agile practitioners and misuse the agile practices. In order to understand the awareness of agile practices, this paper aims to investigate the factors that affect awareness of agile practitioners in implementing agile practices. A systematic literature review (SLR)was conducted in order to classify and define the factors of awareness in agile software development methodology. The review was based on papers between 2002 and December 2014 from seven electronic databases. The relevant papers were included 20 journal articles, 24 conference papers,16 book chapters, 9 workshop papers.Consequently, 69 papers were identified that closely related with a',
       researchQuestion: 'this is another placeholder',
       result: 'result 2', 
-      method: 'agile',
+      method: 'TDD',
     };
 
   // Study 3
@@ -103,7 +103,7 @@ exports.getInitialStudyList = function() {
       ],
       date: '2018',
       abstract: 'In order to track the improvements of agile teams, a system of metrics and indicators is very important to be implemented. Agile Software Development (ASD) promotes working software as the primary way of measuring progress. The current set of metrics are more output oriented rather than using lines of code to estimate productivity. This paper presents the results of a background research in order to identify the most important metrics, indicators, measures and tools software development teams use in relation with agile-based methodologies. The paper also presents a case study based on data gathered in a software outsourcing company. The paper proposes an architecture of an automated system used to provide real-time metrics for measuring agile team performance.',
-      method: 'agile',
+      method: 'TDD',
   };
 
   var study4 =  {
@@ -119,7 +119,7 @@ exports.getInitialStudyList = function() {
     date: '2019',
     researchQuestion: 'this is a placeholder',
     result: 'result 1',
-    method: 'agile',
+    method: 'TDD',
   };
 
   var study5 = {
@@ -144,7 +144,7 @@ exports.getInitialStudyList = function() {
       'DevOps benefits and challenges',
       'DevOps enablers and practices'
     ],
-    method: 'devops',
+    method: 'TDD',
    }; 
 
    var study7 = {
@@ -161,7 +161,7 @@ exports.getInitialStudyList = function() {
       'DevOps',
       'Microservices'
     ],
-    method: 'devops',
+    method: 'TDD',
    }; 
 
    var study8 =  {
@@ -187,7 +187,7 @@ exports.getInitialStudyList = function() {
       'Microservices',
       'Cloud-native'
     ],
-    method: 'devops',
+    method: 'BDD',
     researchQuestion: 
     'Which are the different microservices-based architectural styles? ' +
     'What are the differences among the existing architectural styles? ' +
@@ -225,7 +225,7 @@ exports.getInitialStudyList = function() {
     date: '2018',
     researchQuestion: 'why are microservices so important to the future of DevOps? ',
     result: 'microservices can share the core of the underlying OS, which enables faster deployments in the cloud without diminishing performance. Thus, instead of all application services being part of one enormous monolith, business capabilities are self-contained with well-defined interfaces that avoid synchronous and blocking-calls whenever possible. By adopting the DevOps “ideology,” separate software teams are each responsible for different aspects of the end application allowing both the team and software core to develop, test, handle failures and scale independently. ',
-    method: 'devops',
+    method: 'BDD',
   };
 
   var study10 =  {
@@ -260,7 +260,7 @@ exports.getInitialStudyList = function() {
       'Which practices were associated with DevOps in the literature? ' + 
       'What are the similarities and differences reported by the authors of primary studies between “DevOps” and the other development methods?',
     result: 'To explore the definitions for DevOps in literature, we attempted to identify the central components to define DevOps explicitly. Table 4 shows the identified components elicited from the corresponding studies.',
-    method: 'devops',
+    method: 'BDD',
   };
 
   var study11 =  {
@@ -293,7 +293,7 @@ exports.getInitialStudyList = function() {
     researchQuestion:
       'How can we assess the alignment of the stakeholders’ expectations about user involvement in Agile software development?',
     result: 'Our results in this case study revealed that the development team’s expectations of both the PO’s and SME’s levels of involvement in user activities as well as user characteristics is mostly aligned with the PO’s and SME’s own expectations, with just a few exceptions. Therefore, the reasonable level of alignment of expectations observed was somewhat unexpected. ',
-    method: 'Agile',
+    method: 'TDD',
   };
 
   var study12 =  {
@@ -322,7 +322,7 @@ exports.getInitialStudyList = function() {
       'what knowledge areas in coordination in distributed agile software development are addressed?' + 
       'what types of research are published in the area of coordination?',
     result: 'a number of studies have used the main coordination theories (Malone and Crowston 1994) to investigate the main coordination types, tasks, dependencies, and mechanisms associated with the coordination process in DASD. There is limited research on coordination effectiveness, and in particular, there is apparent lack of specific guidelines for measuring and monitoring coordination effectiveness in DASD. Though some specific roles have been identified, there is no specific research on understanding the functions and obligations associated with these roles.',
-    method: 'Agile',
+    method: 'Retrospectives',
   };
 
   var study13 =  {
@@ -351,7 +351,7 @@ exports.getInitialStudyList = function() {
     researchQuestion:
       'How are dependencies managed in large-scale agile projects?',
     result: 'Our study supports the finding that Scrum of Scrum meetings by themselves are not enough to manage interteam dependencies in large projects. Other types of meetings, such as a meeting with the project manager and all the team leaders, is also necessary. The main implication of our study is, therefore, that project management needs to combine many coordination practices to be able to handle all the dependencies in large-scale agile projects.',
-    method: 'Agile',
+    method: 'Retrospectives',
   };
 
   var studyList = [];

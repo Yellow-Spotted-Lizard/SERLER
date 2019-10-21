@@ -154,23 +154,112 @@ export default class About extends Component {
             console.log('ffilters[' + i + '].value = ' + filters[i].value);
         }
 
-        var query = JSON.stringify({
+        var fullQuery = [];
+
+        var titleQuery = {
             op: "$and",
             queries: [
                 {
-                    op: "$ge",
-                    field: "date",
-                    value: new Date(beginYear + '-01-01')
+                    op: "$match",
+                    field: "title",
+                    value: title
                 },
-                {
-                    op: "$le",
-                    field: "date",
-                    value: new Date(endYear + '-12-31')
-                }
             ]
-        });
+        }
 
-        console.log(query);
+        fullQuery.push(titleQuery);
+
+        if (yearMode === "all") {
+
+        }
+        else if (yearMode === "after") {
+            var dateQuery = {                  
+                op: "$and",
+                queries: [
+                    {
+                        op: "$ge",
+                        field: "date",
+                        value: new Date(beginYear + '-01-01')
+                    }
+                ]
+            }
+    
+            fullQuery.push(dateQuery);
+        }
+        else if (yearMode === "before") {
+            var dateQuery = {                  
+                op: "$and",
+                queries: [
+                    {
+                        op: "$le",
+                        field: "date",
+                        value: new Date(endYear + '-12-31')
+                    }
+                ]
+            }
+    
+            fullQuery.push(dateQuery);
+        }
+        else 
+        {
+            var dateQuery = {                  
+                op: "$and",
+                queries: [
+                    {
+                        op: "$ge",
+                        field: "date",
+                        value: new Date(beginYear + '-01-01')
+                    },
+                    {
+                        op: "$le",
+                        field: "date",
+                        value: new Date(endYear + '-12-31')
+                    }
+                ]
+            }
+    
+            fullQuery.push(dateQuery);
+        }
+
+        var filterQuery;
+        for (i = 0; i < filterCount; i++) {
+            if (filters[i].fieled === "method") {
+                filterQuery = {                  
+                    op: "$and",                
+                    queries: [
+                        {
+                            op: "$match",
+                            field: "method",
+                            value: filters[i].value
+                        }
+                    ]
+                }
+    
+                fullQuery.push(filterQuery);
+                console.log(filterQuery);
+            }
+            else 
+            {
+                filterQuery = {                  
+                    op: "$and",                
+                    queries: [
+                        {
+                            op: "$match",
+                            field: "keywords",
+                            value: filters[i].value
+                        }
+                    ]
+                }
+    
+                fullQuery.push(filterQuery);
+                console.log(filterQuery);
+            }
+        }
+
+        var query = JSON.stringify({                  
+            op: "$and",
+            queries: fullQuery
+        });
 
         // Prepare and run query
         axios.get('/api/v1/evidences/search', {
