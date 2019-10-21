@@ -65,7 +65,7 @@ export default class About extends Component {
 
     onSearch = () => {
         // Get search criteria
-        
+
         // -- Title
         var title = "";
         var tileMode = "contains";
@@ -111,14 +111,14 @@ export default class About extends Component {
 
         // -- Filters
         var filterCount = 0;
-        let filterCountData = localStorage.getItem("serler_filter_count");        
+        let filterCountData = localStorage.getItem("serler_filter_count");
         if (filterCountData != null) {
             filterCount = JSON.parse(filterCountData);
         }
 
         var filters = [];
         for (var i = 0; i < filterCount; i++) {
-            var field= "method";
+            var field = "method";
             var operator = "contains";
             var value = "tdd";
 
@@ -128,7 +128,7 @@ export default class About extends Component {
 
             }
 
-            let operatorData = localStorage.getItem("serler_filter_id_" + i +  "_operator");
+            let operatorData = localStorage.getItem("serler_filter_id_" + i + "_operator");
             if (operatorData != null) {
                 operator = JSON.parse(operatorData);
             }
@@ -148,16 +148,31 @@ export default class About extends Component {
 
         // DEBUG!!!
         console.log('filterCount = ' + filterCount);
-        for (i = 0; i < filterCount; i++)
-        {
+        for (i = 0; i < filterCount; i++) {
             console.log('ffilters[' + i + '].fieled = ' + filters[i].fieled);
             console.log('ffilters[' + i + '].operator = ' + filters[i].operator);
             console.log('ffilters[' + i + '].value = ' + filters[i].value);
         }
 
-        // Prepare query
+        var query = "query: " + JSON.stringify({
+            op: "$and",
+            queries: [
+                {
+                    op: "$ge",
+                    field: "date",
+                    value: new Date(beginYear + '-01-01')
+                },
+                {
+                    op: "$le",
+                    field: "date",
+                    value: new Date(endYear + '-12-31')
+                }
+            ]
+        });
 
-        // Run query
+        console.log(query);
+
+        // Prepare and run query
         axios.get('/api/v1/evidences')
             .then(response => {
                 this.setState({ searchResult: response.data });
