@@ -11,6 +11,8 @@ chai.use(chaiHttp);
 chai.use(chaiThings);
 chai.should();
 
+/*
+
 describe('evidenceServices', function() {
   describe('search title', function() {
      it("should match title", (done) => {
@@ -127,7 +129,6 @@ describe('evidenceServices', function() {
   });
 });
 
-/*
 describe('evidenceServices', function() {
   describe('search authors', function() {
      it("should equal author", (done) => {
@@ -150,9 +151,7 @@ describe('evidenceServices', function() {
     });  
   });
 });
-*/
 
-/*
 describe('evidenceServices', function() {
   describe('search authors', function() {
      it("should match authors", (done) => {
@@ -175,7 +174,6 @@ describe('evidenceServices', function() {
     });  
   });
 });
-*/
 
 describe('evidenceServices', function() {
   describe('search authors', function() {
@@ -200,7 +198,6 @@ describe('evidenceServices', function() {
   });
 });
 
-/*
 describe('evidenceServices', function() {
   describe('search date, keywords, and authors', function() {
      it("should match date, keywords, and authors", (done) => {
@@ -260,3 +257,4 @@ describe('evidenceServices', function() {
   });
 });
 */
+
