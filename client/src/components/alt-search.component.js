@@ -67,11 +67,37 @@ export default class About extends Component {
         // Get search criteria
         
         // -- Title
+        var title = "";
+        var tileMode = "";
+
+        let queryTextData = localStorage.getItem("serler_queryText");
+        if (queryTextData != null) {
+            title = JSON.parse(queryTextData);
+        }
+        console.log('title = ' + title);
+
+        let conditionData = localStorage.getItem("serler_condition");
+        if (conditionData != null) {
+            tileMode = JSON.parse(conditionData);
+        }
+        console.log('tileMode = ' + tileMode);
 
         // -- Calendar
+        //var beginYear = "";
+        //var endYear = "";
+        //var yearMode = "";
 
         // -- Filters
-
+        var filters = [];
+        var filterCount = 0;
+        for (var i = 0; i < filterCount; i++) {
+            var filter = {
+                fieled: "",
+                operator: "",
+                value: "",
+            }
+            filters.push(filter);
+        }
 
         // Prepare query
 

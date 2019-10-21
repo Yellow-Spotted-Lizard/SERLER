@@ -16,8 +16,8 @@ class AltApp extends Component {
                 <Router>
                     <div className="container">
                         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                            <a className="navbar-brand" href="https://yellow-spotted-lizard-serler.herokuapp.com" target="_blank">
-                                <img src={logo} width="30" height="30" />
+                            <a className="navbar-brand" href="https://yellow-spotted-lizard-serler.herokuapp.com">
+                                <img src={logo} width="30" height="30" alt="serler" />
                             </a>
                             <Link to="/" className="navbar-brand">Home</Link>
                             <div className="collpase navbar-collapse">

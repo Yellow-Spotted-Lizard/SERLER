@@ -31,7 +31,7 @@ export default class FilterSet extends Component {
 
         var filterList = [];
         for (var i = 0; i < filterCount; i++) {
-            filterList.push(<Filter filter_id={i} />);
+            filterList.push(<Filter filter_id={i} key={i}/>);
         }
 
         this.setState({ filterCount: filterCount, filterList: filterList })
