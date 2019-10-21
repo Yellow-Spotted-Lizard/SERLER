@@ -147,12 +147,230 @@ exports.getInitialStudyList = function () {
       method: 'devops',
      } 
 
+     var study7 = {
+      authors: [
+        {
+          lastName: 'Chen',
+          firstName: 'Lianping'
+        },
+      ],
+      title: 'Microservices: Architecting for Continuous Deliver and DevOps',
+      date: '2018',
+      url: 'https://www.researchgate.net/profile/Lianping_Chen/publication/323944215_Microservices_Architecting_for_Continuous_Delivery_and_DevOps/links/5af3ac2f4585157136c92238/Microservices-Architecting-for-Continuous-Delivery-and-DevOps.pdf',
+      keywords: [
+        'DevOps',
+        'Microservices'
+      ],
+      method: 'devops',
+     } 
+
+     var study8 =  {
+      title: 'Continuous Architecting with Microservices and DevOps: A Systematic Mapping Study',
+      url: 'https://arxiv.org/pdf/1908.10337.pdf',
+      authors: [
+        {
+          lastName: 'Taibi',
+          firstName: 'Davide'
+        },
+        {
+          lastName: 'Lenarduzzi',
+          firstName: 'Valentina'
+        },
+        {
+          lastName: 'Pahl',
+          firstName: 'Claus'
+        },
+      ],
+      keywords: [
+        'DevOps',
+        'Microservices',
+        'Cloud-native'
+      ],
+      date: '2018',
+      researchQuestion: [
+      'Which are the different microservices-based architectural styles?',
+      'What are the differences among the existing architectural styles?',
+      'Which advantages and disadvantages have been highlighted in implementations described in the literature for the identified architec- turalstyles?'
+      ],
+      result: 'Most of the implementations reported in the papers are related to research prototypes, with the goal of validating the proposed approaches. Only six papers report on implementations in industrial context. Regarding the size of the systems implemented, all the implementations are related to small-sized applications, except [S38] that reports on the migration of a large scale system. Only four implementations report on the development language used (Java/NodeJS,  php/NodeJS/Python, php).',
+      method: 'devops',
+    };
+
+    var study9 =  {
+      title: 'DevOps as a Service: Pushing the Boundaries of Microservice Adoption.',
+      url: 'https://ieeexplore-ieee-org.ezproxy.aut.ac.nz/stamp/stamp.jsp?tp=&arnumber=8379534',
+      authors: [
+        {
+          lastName: 'Trihinas',
+          firstName: 'Demetris'
+        },
+        {
+          lastName: 'Tryfonos',
+          firstName: 'Athanasios'
+        },
+        {
+          lastName: 'Dikaiakos',
+          firstName: 'Marios'
+        },
+        {
+          lastName: 'Pallis',
+          firstName: 'George'
+        },
+      ],
+      keywords: [
+          "Computing and Processing",
+          "Software development",
+          "Devops",
+      ],
+      date: '2018',
+      researchQuestion: 'why are microservices so important to the future of DevOps? ',
+      result: 'microservices can share the core of the underlying OS, which enables faster deployments in the cloud without diminishing performance. Thus, instead of all application services being part of one enormous monolith, business capabilities are self-contained with well-defined interfaces that avoid synchronous and blocking-calls whenever possible. By adopting the DevOps “ideology,” separate software teams are each responsible for different aspects of the end application allowing both the team and software core to develop, test, handle failures and scale independently. ',
+      method: 'devops',
+    };
+
+    var study10 =  {
+      title: 'What is DevOps? A Systematic Mapping Study on Definitions and Practices.',
+      url: 'https://www.researchgate.net/profile/Ramtin_Jabbari/publication/308857081_What_is_DevOps_A_Systematic_Mapping_Study_on_Definitions_and_Practices/links/5aa2ae9145851543e63c223a/What-is-DevOps-A-Systematic-Mapping-Study-on-Definitions-and-Practices.pdf',
+      authors: [
+        {
+          lastName: 'Jabbari',
+          firstName: 'Ramtin'
+        },
+        {
+          lastName: 'Ali',
+          firstName: 'Nauman'
+        },
+        {
+          lastName: 'Petersen',
+          firstName: 'Kai'
+        },
+        {
+          lastName: 'Tanveer',
+          firstName: 'Binish'
+        },
+      ],
+      keywords: [
+          "DevOps definition",
+          "DevOps practice",
+          "Software development method",
+      ],
+      date: '2016',
+      researchQuestion: [
+        'How is “DevOps” defined in peer-reviewed literature on the topic?',
+        'Which practices were associated with DevOps in the literature?',
+        'What are the similarities and differences reported by the authors of primary studies between “DevOps” and the other development methods?'
+        ],
+      result: 'To explore the definitions for DevOps in literature, we attempted to identify the central components to define DevOps explicitly. Table 4 shows the identified components elicited from the corresponding studies.',
+      method: 'devops',
+    };
+
+    var study11 =  {
+      title: 'Alignment of Stakeholder Expectations about User Involvement in Agile Software Development',
+      url: 'https://www.researchgate.net/profile/Muneera_Bano/publication/315090484_Alignment_of_Stakeholder_Expectations_about_User_Involvement_in_Agile_Software_Development/links/59475d68a6fdccb93abeaac4/Alignment-of-Stakeholder-Expectations-about-User-Involvement-in-Agile-Software-Development.pdf',
+      authors: [
+        {
+          lastName: 'Buchan',
+          firstName: 'Jim'
+        },
+        {
+          lastName: 'Bano',
+          firstName: 'Muneera'
+        },
+        {
+          lastName: 'Zowghi',
+          firstName: 'Didar'
+        },
+        {
+          lastName: 'MacDonell',
+          firstName: 'Stephen'
+        },
+      ],
+      keywords: [
+          "Agile software development",
+          "Repertory Grids",
+          "alignment",
+      ],
+      date: '2017',
+      researchQuestion: [
+        'How can we assess the alignment of the stakeholders’ expectations about user involvement in Agile software development?',
+        ],
+      result: 'Our results in this case study revealed that the development team’s expectations of both the PO’s and SME’s levels of involvement in user activities as well as user characteristics is mostly aligned with the PO’s and SME’s own expectations, with just a few exceptions. Therefore, the reasonable level of alignment of expectations observed was somewhat unexpected. ',
+      method: 'Agile',
+    };
+
+    var study12 =  {
+      title: 'Coordination in Distributed Agile Software Development: A Systematic Review',
+      url: 'http://156.62.60.45/bitstream/handle/10292/12456/ACIS2017_paper_118_FULL.pdf?sequence=2&isAllowed=y',
+      authors: [
+        {
+          lastName: 'Senapathi',
+          firstName: 'Mali '
+        },
+        {
+          lastName: 'Buchan',
+          firstName: 'Jim'
+        },
+        {
+          lastName: 'Talukder',
+          firstName: 'A.B.M. Nurul Afser'
+        },
+      ],
+      keywords: [
+          "distributed agile software development.",
+          "coordination",
+      ],
+      date: '2017',
+      researchQuestion: [
+        'what knowledge areas in coordination in distributed agile software development are addressed?',
+        'what types of research are published in the area of coordination?',
+        ],
+      result: 'a number of studies have used the main coordination theories (Malone and Crowston 1994) to investigate the main coordination types, tasks, dependencies, and mechanisms associated with the coordination process in DASD. There is limited research on coordination effectiveness, and in particular, there is apparent lack of specific guidelines for measuring and monitoring coordination effectiveness in DASD. Though some specific roles have been identified, there is no specific research on understanding the functions and obligations associated with these roles.',
+      method: 'Agile',
+    };
+
+    var study13 =  {
+      title: 'Dependency Management in Large-Scale Agile: A Case Study of DevOps Teams',
+      url: 'https://scholarspace.manoa.hawaii.edu/bitstream/10125/60137/0697.pdf',
+      authors: [
+        {
+          lastName: 'Stray',
+          firstName: 'Viktoria'
+        },
+        {
+          lastName: 'Moe',
+          firstName: 'Nils Brede'
+        },
+        {
+          lastName: 'Aasheim',
+          firstName: 'Andreas'
+        },
+      ],
+      keywords: [
+          "Dependency Management",
+          "Agile",
+          'DevOps',
+      ],
+      date: '2019',
+      researchQuestion: [
+        'How are dependencies managed in large-scale agile projects?',
+        ],
+      result: 'Our study supports the finding that Scrum of Scrum meetings by themselves are not enough to manage interteam dependencies in large projects. Other types of meetings, such as a meeting with the project manager and all the team leaders, is also necessary. The main implication of our study is, therefore, that project management needs to combine many coordination practices to be able to handle all the dependencies in large-scale agile projects.',
+      method: 'Agile',
+    };
+
     var studyList = [];
     studyList.push(study1);
     studyList.push(study2);
     studyList.push(study3);
     studyList.push(study4);
     studyList.push(study5);
+    studyList.push(study7);
+    studyList.push(study8);
+    studyList.push(study9);
+    studyList.push(study10);
+    studyList.push(study11);
+    studyList.push(study12);
+    studyList.push(study13);
 
     return studyList;
 }
