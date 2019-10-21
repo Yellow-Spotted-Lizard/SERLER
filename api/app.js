@@ -41,6 +41,7 @@ app.use('/api/v1', router);
 adminService.seedUsers(null);
 
 // Seed studies
+studyService.disposeStudies(null);
 studyService.seedStudies(null);
 
 module.exports = app

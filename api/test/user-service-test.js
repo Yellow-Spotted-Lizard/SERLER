@@ -12,6 +12,7 @@ chai.should();
 
 // getInitialUserList
 
+/*
 describe('userServices', function() {
     describe('#getInitialUserList()', function() {
        it("should get all initial users", (done) => {
@@ -23,6 +24,7 @@ describe('userServices', function() {
   });
 
 // getUserList
+*/
 
 describe('userServices', function() {
   describe('#getUserList()', function() {
