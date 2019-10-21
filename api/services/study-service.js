@@ -147,7 +147,32 @@ exports.getInitialStudyList = function() {
     method: 'devops',
    }; 
 
-   var study7 = {
+   var study6 = {
+    authors: [{
+            lastName: 'Buchan',
+            firstName: 'Jim'
+        },
+        {
+            lastName: 'MacDonell',
+            firstName: 'Stephen'
+        },
+        {
+            lastName: 'Yang',
+            firstName: 'Jennifer'
+        }
+    ],
+    title: 'Effective team onboarding in Agile software development: techniques and goals',
+    date: '2018',
+    url: 'https://arxiv.org/pdf/1907.10206.pdf',
+    keywords: [
+        'Agile teams',
+        'onboarding',
+        'software engineering'
+    ],
+    method: 'Interview Survey',
+  }
+
+  var study7 = {
     authors: [
       {
         lastName: 'Chen',
@@ -353,6 +378,31 @@ exports.getInitialStudyList = function() {
     result: 'Our study supports the finding that Scrum of Scrum meetings by themselves are not enough to manage interteam dependencies in large projects. Other types of meetings, such as a meeting with the project manager and all the team leaders, is also necessary. The main implication of our study is, therefore, that project management needs to combine many coordination practices to be able to handle all the dependencies in large-scale agile projects.',
     method: 'Agile',
   };
+  
+  var study14 = {
+    authors: [{
+            lastName: 'Reyna',
+            firstName: 'A'
+        },
+        {
+            lastName: 'Martín',
+            firstName: 'C'
+        },
+        {
+            lastName: 'Chen',
+            firstName: 'J'
+        }
+    ],
+    title: 'On blockchain and its integration with IOT. Challenges and opportunities',
+    date: '2018',
+    url: 'https://doi.org/https://doi.org/10.1016/j.future.2018.05.046',
+    keywords: [
+        'Blockchain',
+        'Insurance',
+        'IoT'
+    ],
+    method: 'Interview Survey',
+  }
 
   var studyList = [];
   studyList.push(study1); 
@@ -360,6 +410,7 @@ exports.getInitialStudyList = function() {
   studyList.push(study3);
   studyList.push(study4);
   studyList.push(study5);
+  studyList.push(study6);
   studyList.push(study7);
   studyList.push(study8);
   studyList.push(study9);
@@ -367,6 +418,7 @@ exports.getInitialStudyList = function() {
   studyList.push(study11);
   studyList.push(study12);
   studyList.push(study13);
+  studyList.push(study14);
 
   return studyList;
 }
@@ -386,7 +438,7 @@ exports.seedStudies = function (res) {
         } else {
             if (evidence == null) {
                 var studyList = studyService.getInitialStudyList();
-                studyList.forEach(function(value, index, array) {
+                Promise.all(studyList.map(function(value, index, array) {
                     var evidence = new Evidence();
                     evidence.title = value.title;
                     evidence.authors = value.authors;
@@ -408,17 +460,17 @@ exports.seedStudies = function (res) {
                     evidence.markModified("result");
                     evidence.markModified("method");
 
-                    evidence.save()
-                        .then(evidence => {
-                            if (res != null) {
-                                res.status(200).json({ 'evidence': 'evidence added successfully' });
-                            }
-                        })
-                        .catch(err => {
-                            if (res != null) {
-                                res.status(400).send('Unable to add new evidence. Error: ' + err.message);
-                            }
-                        });
+                    return evidence.save();
+                }))
+                .then(evidences => {
+                    if (res != null) {
+                        res.status(200).json({ 'evidence': 'evidence added successfully' });
+                    }
+                })
+                .catch(err => {
+                    if (res != null) {
+                        res.status(400).send('Unable to add new evidence. Error: ' + err.message);
+                    }
                 });
             } else {
                 if (res != null) {
