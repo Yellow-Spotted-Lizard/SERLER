@@ -144,7 +144,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
            });
       done();
     });  
@@ -167,7 +167,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
            });
       done();
     });  
@@ -248,7 +248,7 @@ describe('evidenceServices', function() {
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
-              res.body.should.be.lengthOf(2);
+              res.body.should.be.lengthOf(3);
               res.body.should.be.to.include.something.that.has.property('title', 'Alignment of Stakeholder Expectations About User Involvement in Agile Software Development');
               res.body.should.be.to.include.something.that.has.property('title', 'Real Time Agile Metrics for Measuring Team Performance.');
            });
